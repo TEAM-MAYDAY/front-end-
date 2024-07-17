@@ -1,0 +1,19 @@
+.button-wrapper {
+    align-items: flex-start;
+    display: inline-flex;
+    position: relative;
+  }
+  
+  .button-wrapper .button-instance {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    gap: unset !important;
+    height: unset !important;
+    padding: 5px 20px !important;
+    width: unset !important;
+  }
+  
+  .button-wrapper .design-component-instance-node {
+    margin-top: -1px !important;
+  }
+  

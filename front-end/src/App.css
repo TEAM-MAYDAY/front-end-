@@ -1,0 +1,10 @@
+/* App.css */
+
+.app-container {
+  width: 1440px;
+  height: 1080px;
+  margin: 0 auto; /* 수평으로 중앙 정렬 */
+ /* overflow: auto;  콘텐츠가 넘칠 경우 스크롤 추가 */
+  background-color: #f0f0f0; /* 예시 배경색 */
+  box-sizing: border-box; /* 패딩과 보더가 width와 height에 포함되도록 설정 */
+}
