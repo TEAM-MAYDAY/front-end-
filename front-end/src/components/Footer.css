@@ -1,38 +1,17 @@
-.Copyright {
-    height: 314px;
-}
+/* Footer.css */
 
-/*
 .footer {
-    background-color: #0052cc;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.footer-content {
+    width: 100%;
+    height: 60px;
+    background-color: white;
     display: flex;
     justify-content: center;
-    gap: 100px;
-    margin-bottom: 20px;
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    position: relative;
 }
 
-.footer-column h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.Copyright {
+    height: 40px;
 }
-
-.footer-column p {
-    margin: 5px 0;
-}
-
-.footer-note {
-    font-size: 14px;
-    margin-top: 20px;
-} */

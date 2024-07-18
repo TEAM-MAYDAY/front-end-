@@ -1,55 +1,68 @@
-import React from "react";
-import { ButtonWrapper } from "../components/ButtonWrapper";
-import "./Home.css";
+import React, { useState, useEffect } from 'react';
+import Landing from './Landing';
+import LightBulb from './LightBulb';
+import SupportPolicies from './SupportPolicies';
+import { useSpring, animated } from 'react-spring';
+import './Home.css';
 
-export const Home = () => {
+const Home = () => {
+  const [stage, setStage] = useState(0);
+
+  const landingProps = useSpring({
+    opacity: stage === 0 ? 1 : 0,
+    config: { duration: 1000 },
+  });
+
+  const lightBulbProps = useSpring({
+    opacity: stage === 1 ? 1 : 0,
+    config: { duration: 1000 },
+  });
+
+  const supportPoliciesProps = useSpring({
+    opacity: stage === 2 ? 1 : 0,
+    config: { duration: 1000 },
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const height = window.innerHeight;
+
+      if (scrollY < height) {
+        setStage(0);
+      } else if (scrollY >= height && scrollY < 2 * height) {
+        setStage(1);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (stage === 1) {
+      const timer = setTimeout(() => {
+        setStage(2);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [stage]);
+
   return (
     <div className="home-container">
-      {/* Main Section */}
-      <div className="main-section">
-        <img className="main-image" alt="Main" src="/imgs/Landing-BG.png" />
-        <div className="controls">
-          <div className="control-button">
-            <img className="control-image" alt="Left-Button" src="/imgs/Left-Button.png" />
-          </div>
-          <div className="control-button">
-            <img className="control-image" alt="Pause-Button" src="/imgs/pause.png" />
-          </div>
-          <div className="control-button">
-            <img className="control-image" alt="Right-Button" src="/imgs/Right-Button.png" />
-          </div>
-        </div>
-        <div className="main-text">
-          <h1>우리가 원하는 새로운 방식 Workation</h1>
-        </div>
-      </div>
-
-      {/* Support Policies Section */}
-      <div className="support-policies">
-        <h2>워케이션 지원 정책</h2>
-        <p>여기서 한 눈에 찾아보세요 👀</p>
-        <div className="cards">
-          <div className="card">숙소이름(상품이름)</div>
-          <div className="card">숙소이름(상품이름)</div>
-          <div className="card">숙소이름(상품이름)</div>
-          <div className="card">숙소이름(상품이름)</div>
-          <div className="card">숙소이름(상품이름)</div>
-        </div>
-      </div>
-
-      {/* Categories Section */}
-      <div className="categories-section">
-        <ButtonWrapper buttonText="바다🌊" className="category-button" />
-        <ButtonWrapper buttonText="네트워킹파티🎉" className="category-button" />
-        <ButtonWrapper buttonText="공유오피스" className="category-button" />
-        <ButtonWrapper buttonText="Category" className="category-button" />
-        <ButtonWrapper buttonText="Cat2" className="category-button" />
-        <ButtonWrapper buttonText="Cat3" className="category-button" />
-        <ButtonWrapper buttonText="Cat4" className="category-button" />
-      </div>
+      <animated.div style={landingProps} className="section">
+        <Landing />
+      </animated.div>
+      <animated.div style={lightBulbProps} className="section">
+        <LightBulb />
+      </animated.div>
+      {stage === 2 && (
+        <animated.div style={supportPoliciesProps} className="section grid-container">
+          <SupportPolicies />
+        </animated.div>
+      )}
     </div>
   );
 };
 
 export default Home;
-

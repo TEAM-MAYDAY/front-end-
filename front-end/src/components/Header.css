@@ -1,13 +1,24 @@
 /* Header.css */
 
 .header {
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Adjust the width to match the grid */
+    height: 70px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 .logo-and-text {
@@ -17,22 +28,16 @@
 
 .logo {
     height: 50px;
-    margin-right: 10px;
-}
-
-.logo-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
 }
 
 .header-links {
     display: flex;
-    gap: 20px;
+    gap: 15px;
 }
 
 .header-link {
-    font-size: 18px;
-    color: #333;
     cursor: pointer;
+    color: #333;
+    text-decoration: none;
+    padding: 0 20px 0 0;
 }

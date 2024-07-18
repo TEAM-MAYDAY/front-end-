@@ -1,0 +1,67 @@
+/* SupportPolicies.css */
+
+.support-policies {
+    padding: 40px 20px;
+    background-color: #f8f8f8;
+  }
+  
+  .header-support-policies {
+    text-align: left;
+  }
+  
+  .header-content {
+    max-width: 800px; /* Adjust width as necessary */
+    margin: 0 auto;
+  }
+  
+  .header-support-policies h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .header-support-policies p {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  
+  .subtext {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .category-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .card {
+    width: 200px;
+    height: 150px;
+    background-color: #f8d7da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  
