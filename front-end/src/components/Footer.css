@@ -1,4 +1,39 @@
-/* Footer.css */
+ /* Footer.css */
+
+.footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: -100%; /* Initially hidden */
+    left: 0;
+    transition: bottom 0.5s ease-in-out;
+}
+  
+  .footer.visible {
+    bottom: -2%; /* Slide footer into view */
+  }
+  
+  .footer img {
+    height: 250px;
+  }
+  
+ /* .footer {
+    width: 85%;
+    text-align: center;
+    background-color: #f8f8f8;
+    background-color: blue;
+    position: relative;
+    transform: translateY(-60%);
+     margin: -2000px 30px 0 0px; 
+  }
+  
+  .footer img {
+    height: 100vh;
+    z-index: 1000;
+
+  }  */
+  
+/* Footer.css
 
 .footer {
     width: 100%;
@@ -14,4 +49,5 @@
 
 .Copyright {
     height: 40px;
-}
+} 
+*/

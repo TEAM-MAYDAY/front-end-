@@ -1,34 +1,34 @@
-/* SupportPolicies.css */
 
 .support-policies {
-  padding: 40px 10px;
-  background-color: #f8f8f8;
-  margin: 0 200px;
+  width: 80%;
+  height: 200vh;
+  padding: 40px 40px 250px 40px;
+  margin-top: 22px;
+  margin-bottom: 200px;
+
 }
 
 .header-support-policies {
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
-.header-support-policies h2,
-.header-support-policies p,
-.subtext {
-  display: block;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
 
+.text-image{
+  width: 600px;
+  height: auto;
+}
 .header-support-policies p {
   font-size: 20px;
   margin: 0 0 20px 0;
-  font-weight: normal; /* Ensure it doesn't inherit bold from h2 */
+  font-weight: normal; 
 }
 
 .subtext {
   font-size: 16px;
   color: #555;
-  font-weight: normal; /* Ensure it doesn't inherit bold from h2 */
+  font-weight: normal; 
 }
 
 .button-container {
@@ -57,11 +57,11 @@
 }
 
 .card {
-  width: 200px;
+  width: 220px;
   height: 150px;
   background-color: #f8d7da;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-}
+}  

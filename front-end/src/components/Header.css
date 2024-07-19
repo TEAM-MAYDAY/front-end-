@@ -8,7 +8,7 @@
     transform: translateX(-50%);
     width: 80%; /* Adjust the width to match the grid */
     height: 70px;
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
