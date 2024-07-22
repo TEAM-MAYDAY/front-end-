@@ -3,14 +3,14 @@
 .footer {
     width: 100%;
     text-align: center;
-    position: fixed;
-    bottom: -100%; /* Initially hidden */
+    /* position: fixed; */
+    bottom: -100%; 
     left: 0;
     transition: bottom 0.5s ease-in-out;
 }
   
   .footer.visible {
-    bottom: -2%; /* Slide footer into view */
+    bottom: 2%; /* Slide footer into view */
   }
   
   .footer img {

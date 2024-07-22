@@ -1,14 +1,57 @@
 import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 import './SupportPolicies.css';
 
 const SupportPolicies = () => {
+    // const [selectedFilters, setSelectedFilters] = useState([]);
+    // const [allCards, setAllCards] = useState([]);
+    // const [filteredCards, setFilteredCards] = useState([]);
 
+    // // 필터 버튼 클릭 핸들러
+    // const handleButtonClick = (buttonName, filter) => {
+    //     setClickedButtons(prevState => ({
+    //         ...prevState,
+    //         [buttonName]: !prevState[buttonName],
+    //     }));
+
+    //     setSelectedFilters(prevFilters =>
+    //         prevFilters.includes(filter)
+    //             ? prevFilters.filter(f => f !== filter)
+    //             : [...prevFilters, filter]
+    //     );
+    // };
+
+    // // 백엔드 데이터 요청
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('https://api.example.com/cards');
+    //             const data = await response.json();
+    //             setAllCards(data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, []);
+
+    // // 필터링된 카드 업데이트
+    // useEffect(() => {
+    //     if (selectedFilters.length === 0) {
+    //         setFilteredCards(allCards);
+    //     } else {
+    //         setFilteredCards(allCards.filter(card => 
+    //             selectedFilters.every(filter => card.categories.includes(filter))
+    //         ));
+    //     }
+    // }, [selectedFilters, allCards]);
       const [clickedButtons, setClickedButtons] = useState({
         monitor: false,
         cafeStyleOffice: false,
         coworkingOffice: false,
         Parking: false,
-        PhoneBoothl: false
+        PhoneBooth: false
     });
 
       const handleButtonClick = (buttonName) => {
@@ -57,14 +100,66 @@ const SupportPolicies = () => {
                 </button>
       </div>
       <div className="cards">
-        <div className="card1">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
-        <div className="card">숙소이름(상품이름)</div>
+            <div className="card-container">
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" >
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" >
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" >
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
       </div>
+      {/* <div className="cards">
+                {filteredCards.map(card => (
+                    <div className="card-container" key={card.id}>
+                        <div className="card-image">
+                            <img src={card.imageUrl} alt={card.title} />
+                        </div>
+                        <div className="card-content">
+                            <div className="support-badge">{card.support}</div>
+                            <h2>{card.title}</h2>
+                            <p>{card.location}</p>
+                            <p>{card.duration}</p>
+                        </div>
+                    </div>
+                ))}
+            </div> */}
     </div>
   );
 };

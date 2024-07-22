@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
-
 const Footer = () => {
+
     const [isBottom, setIsBottom] = useState(false);
 
     const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
         const fullHeight = document.body.scrollHeight;
-
-        if (scrollTop -260  >= fullHeight/3) {
+        const scrollTop = document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight;
+        if (scrollTop + clientHeight >= fullHeight*1/3 ) {
             setIsBottom(true);
         } else {
             setIsBottom(false);
         }
     };
+
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -30,6 +30,32 @@ const Footer = () => {
 };
 
 export default Footer;
+// const Footer = ({ gridRef }) => {
+//   const [isBottom, setIsBottom] = useState(false);
+
+//     const handleScroll = () => {
+//         const fullHeight = document.body.scrollHeight;
+//         const scrollTop = document.documentElement.scrollTop;
+//         const clientHeight = document.documentElement.clientHeight;
+    
+//         const gridElement = gridRef.current;
+//         if (gridElement) {
+//             console.log("그리드영역ㅊㅋㄹㅊ");
+//           const gridScrollTop = gridElement.scrollTop;
+//           const gridScrollHeight = gridElement.scrollHeight;
+//           const gridClientHeight = gridElement.clientHeight;
+//           if (scrollTop + clientHeight >=  fullHeight*2/3) {
+//             setIsBottom(true);
+//           } else {
+//             setIsBottom(false);
+//           }
+//         }
+//       };
+//     }
+// export default Footer;
+
+
+
 
 // import React, { useEffect, useState } from 'react';
 // import './Footer.css';

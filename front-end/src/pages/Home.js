@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Landing from './Landing';
 import LightBulb from './LightBulb';
 import SupportPolicies from './SupportPolicies';
@@ -8,6 +8,7 @@ import './Home.css';
 
 const Home = () => {
   const [stage, setStage] = useState(0);
+  const gridRef = useRef(null); // 그리드 섹션의 DOM 요소를 참조하기 위해 useRef 사용
 
   const landingProps = useSpring({
     opacity: stage === 0 ? 1 : 0,
@@ -38,12 +39,29 @@ const Home = () => {
         setStage(2);
       }
     };
-
+    const handleWheel = (event) => {
+      if (stage === 2) { // 그리드 섹션일 때만 작동
+        const gridElement = gridRef.current;
+        if (gridElement) { // gridRef.current가 null이 아닌 경우에만 실행
+          if (event.deltaY < 0 && gridElement.scrollTop === 0) {
+            // Scroll up from grid section when at the top of the grid
+            window.scrollTo({
+              top: window.innerHeight * 2 - 1,
+              behavior: 'smooth',
+            });
+            setStage(1);
+          }
+        }
+      }
+    };
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('wheel', handleWheel); // wheel 이벤트 추가
     handleScroll(); // Ensure the scroll position is checked when the component mounts
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('wheel', handleWheel); // clean-up 이벤트 리스너
+  };
+}, [stage]);
   useEffect(() => {
     if (stage === 1) {
       const timer = setTimeout(() => {
@@ -62,15 +80,17 @@ const Home = () => {
         <LightBulb />
       </animated.div>
       {stage === 2 && (
-        <animated.div style={supportPoliciesProps} className="section grid-container">
-          <SupportPolicies />
-        </animated.div>
+        <div className="SupportPoliciesContainer">
+          <animated.div style={supportPoliciesProps} className="section2 grid-container">
+            <SupportPolicies />
+            {/* <Footer /> */}
+            <Footer gridRef={gridRef} /> {/* gridRef를 Footer로 전달 */}
+          </animated.div>
+        </div>
       )}
-      <Footer />
     </div>
   );
 };
-
 export default Home;
 
 // import React, { useState, useEffect } from 'react';
