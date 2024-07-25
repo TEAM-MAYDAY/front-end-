@@ -7,7 +7,6 @@ import Footer2 from './components/Footer2';
 import './App.css';  
 import DetailedPage from './pages/DetailedPage';
 
-
 const App = () => {
     return (
         <div className="app-container">
