@@ -13,7 +13,8 @@ const App = () => {
             <Header />
             {/* <Home /> */}
             <DetailedPage />
-            <Footer2 />
+            <Footer2 />\
+            {/* 룰룰라라 */}
             {/* <Footer />  */}
         </div>
         // 백엔드에서 링크 주면 아래로 path에다 url 업로드하기
