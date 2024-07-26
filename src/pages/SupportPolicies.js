@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 // import React, { useState, useEffect } from 'react';
 import './SupportPolicies.css';
 
@@ -60,7 +62,11 @@ const SupportPolicies = () => {
               [buttonName]: !prevState[buttonName],
           }));
       };
+      const navigate = useNavigate();
 
+      const handleDivClick = () => {
+        navigate('/detailed');
+      };
 
   return (
     <div className="support-policies">
@@ -100,7 +106,7 @@ const SupportPolicies = () => {
                 </button>
       </div>
       <div className="cards">
-            <div className="card-container">
+            <div className="card-container" onClick={handleDivClick}>
                 <div className="card-image">
                     <img src="/imgs/Landing-BG.png" alt="card-image" />
                 </div>
@@ -111,7 +117,7 @@ const SupportPolicies = () => {
                         <p>2박 3일</p>
                 </div>
             </div>
-            <div className="card-container" >
+            <div className="card-container"onClick={handleDivClick} >
                 <div className="card-image">
                     <img src="/imgs/Landing-BG.png" alt="card-image" />
                 </div>
@@ -122,7 +128,7 @@ const SupportPolicies = () => {
                         <p>2박 3일</p>
                 </div>
             </div>
-            <div className="card-container" >
+            <div className="card-container"onClick={handleDivClick} >
                 <div className="card-image">
                     <img src="/imgs/Landing-BG.png" alt="card-image" />
                 </div>
@@ -133,7 +139,7 @@ const SupportPolicies = () => {
                         <p>2박 3일</p>
                 </div>
             </div>
-            <div className="card-container" >
+            <div className="card-container" onClick={handleDivClick}>
                 <div className="card-image">
                     <img src="/imgs/Landing-BG.png" alt="card-image" />
                 </div>

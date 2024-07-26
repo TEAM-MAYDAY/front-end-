@@ -1,7 +1,13 @@
 import React from 'react';
 import './DetailedPage.css';
+import { useNavigate  } from 'react-router-dom';
 
 const DetailedPage = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/aiproposal');
+  };
   return (
     <div className="container">
       <div className="gallery">
@@ -18,9 +24,9 @@ const DetailedPage = () => {
             <div className="lined-heading">한줄 소개글</div>
           </section>
           <section className="content-tagbar">
-            <div className="tag">ㄹㄹㄹㄹㄹㄹ</div>
-            <div className="tag">ㅁㅁㅁ</div>
-            <div className="tag"ㅇㅇㅇ></div>
+            <div className="tag"></div>
+            <div className="tag"></div>
+            <div className="tag"></div>
           </section>
           <section className="content-detail">
             <div className="share-office">
@@ -42,8 +48,20 @@ const DetailedPage = () => {
           </section>
         </div>
         <div className="sidebar-container">
-          <div className="alarm">지금 AI 써보러가기</div>
-          <div className="sidebar">sidebar</div>
+          <div className="alarm-section">
+            <button onClick={handleClick} className="alarm">Ai 도움받고 신청하기</button>
+            <div className="alarm-message">
+                🔼 이 공고는 3가지 소개글이 필요해요<br/>　고민 말고 Ai와 함께 1분만에 작성!
+            </div>
+            <div className="alarm-sub-message">예시:</div>
+            <div className="alarm-sub-message2"> 
+              지원동기 | 기대하는 바 | 활동계획
+            </div>
+          </div>
+          <div className="sidebar-box">
+            <div className="sidebar-message">📎 관련 사이트</div>
+            <div className="sidebar"></div>         
+          </div>
         </div>
       </main>
     </div>

@@ -1,23 +1,29 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
+
 import Header from './components/Header';
 import Home from './pages/Home';
-// import Footer from './components/Footer';
 import Footer2 from './components/Footer2';
 import './App.css';  
 import DetailedPage from './pages/DetailedPage';
-
+import Aiproposal from './pages/Aiproposal';
 
 const App = () => {
     return (
-        <div className="app-container">
+        <Router>
             <Header />
-            {/* <Home /> */}
-            <DetailedPage />
-            <Footer2 />\
-            {/* 룰룰라라 */}
-            {/* <Footer />  */}
-        </div>
+            <Routes>
+                <Route path="/" element={<><Home /></>} />
+                <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
+                {/* <Route path="/" element={<>  <DetailedPage /> <Footer2 /> </>} /> */}
+                <Route path="/aiproposal" element={<><Aiproposal /> <Footer2 /> </>} />
+            </Routes>
+        </Router>
+            // {/* <Header />
+            // <DetailedPage />
+            // <Footer2 /> */}
+
         // 백엔드에서 링크 주면 아래로 path에다 url 업로드하기
         // return (
         //     <div className="app-container">

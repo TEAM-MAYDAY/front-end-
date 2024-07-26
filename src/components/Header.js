@@ -12,7 +12,7 @@ const Header = () => {
                     <span className="header-link">워케이션이란?</span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
-                    <span className="header-link">로그인</span>
+                    <span className="header-link">로그인　　　</span>
                 </nav>
             </div>
         </header>

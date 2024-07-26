@@ -1,14 +1,13 @@
 
 .footer {
-    width: 100%;
+    width:auto;
     text-align: center;
     /* position: fixed; */
-    margin-top: 201.99px;
-    
+    margin-top: 235px;
 }
   
 
   
   .footer img {
-    height: 250px;
+    height: 251px;
   }
