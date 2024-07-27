@@ -6,8 +6,8 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Footer2 from './components/Footer2';
 import './App.css';  
-import DetailedPage from './pages/DetailedPage';
 import Aiproposal from './pages/Aiproposal';
+import DetailedPage from './pages/DetailedPage';
 
 const App = () => {
     return (

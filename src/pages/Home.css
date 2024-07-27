@@ -35,6 +35,7 @@ body, html, .home-container {
   top: 0;
   left: 0;
 }
+
 .section2 {
   display: flex;
   min-height: 100vh; 
@@ -47,13 +48,11 @@ body, html, .home-container {
   left: 0;
   overflow-y: auto;
 }
-
-
 .grid-container {
   display: block;
   justify-content: center;
   align-items: center;
-  width: 95%; 
+  width: 101%; 
   /* height: 100vh; */
   /* height: auto; */
   margin: 50px 0px 50px 0px;

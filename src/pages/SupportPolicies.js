@@ -55,7 +55,6 @@ const SupportPolicies = () => {
         Parking: false,
         PhoneBooth: false
     });
-
       const handleButtonClick = (buttonName) => {
           setClickedButtons(prevState => ({
               ...prevState,

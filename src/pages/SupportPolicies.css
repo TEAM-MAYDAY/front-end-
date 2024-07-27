@@ -78,8 +78,12 @@
   position: relative;
   height: 338px;
   width: 351px;
+  transition: transform 0.2s;
 }
-
+.card-container:hover{
+  transform: scale(1.05,1.05);
+  cursor: pointer;
+}
 .card-image img {
   position:   absolute;
   width: 100%;
