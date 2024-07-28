@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Footer2 from './components/Footer2';
 import './App.css';  
-import Aiproposal from './pages/Aiproposal';
+import AIpage from './pages/AIpage';
 import DetailedPage from './pages/DetailedPage';
 
 const App = () => {
@@ -14,11 +14,10 @@ const App = () => {
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<><Home /></>} />
+                <Route path="/" element={<><Home /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
-                {/* <Route path="/" element={<>  <DetailedPage /> <Footer2 /> </>} /> */}
-                <Route path="/aiproposal" element={<><Aiproposal /> <Footer2 /> </>} />
-            </Routes>
+                <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
+                </Routes>
         </Router>
             // {/* <Header />
             // <DetailedPage />
@@ -45,6 +44,6 @@ const App = () => {
         //     </div>
         //   );
     );
-};
+}
 
 export default App;

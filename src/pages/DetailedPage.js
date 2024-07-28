@@ -9,7 +9,7 @@ const DetailedPage = () => {
   }, []);
 
   const handleClick = () => {
-    navigate('/aiproposal');
+    navigate('/aipage');
   };
   return (
     <div className="container">
