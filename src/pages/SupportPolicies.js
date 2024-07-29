@@ -149,6 +149,72 @@ const SupportPolicies = () => {
                         <p>2박 3일</p>
                 </div>
             </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
       </div>
       {/* <div className="cards">
                 {filteredCards.map(card => (
