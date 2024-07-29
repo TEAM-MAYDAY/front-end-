@@ -7,10 +7,9 @@ div .footer3 {
   height: 251px;
   transition: transform 0.5s ease;
   background-color: #f8f8f8;
-  
+
 }
-/* 룰루랄라 */
-.arrow{
+\.arrow{
 width: 40px;
 height: 220px;
 /* background-color: red; */

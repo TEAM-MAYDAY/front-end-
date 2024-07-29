@@ -9,6 +9,8 @@ import Footer3 from './components/Footer3';
 
 import './App.css';  
 import AIpage from './pages/AIpage';
+import AIanswer from './pages/AIanswer.js';
+
 import DetailedPage from './pages/DetailedPage';
 import Error from './pages/Error';
 
@@ -20,6 +22,7 @@ const App = () => {
                 <Route path="/" element={<><Home /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
+                <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />
             </Routes>
         </Router>

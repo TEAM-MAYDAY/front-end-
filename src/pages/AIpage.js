@@ -1,42 +1,107 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
+import { useNavigate } from 'react-router-dom';
 
+// import axios from 'axios';
 const AIpage = () => {
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   const [inputValue3, setInputValue3] = useState('');
-
+  
   const [isClicked1, setIsClicked1] = useState(false);
   const [isClicked2, setIsClicked2] = useState(false);
   const [isClicked3, setIsClicked3] = useState(false);
-
-
-  const handleInputChange1 = (event) => {
-    setInputValue1(event.target.value);
-  };
-
-  const handleInputChange2 = (event) => {
-    setInputValue2(event.target.value);
-  };
-
-  const handleInputChange3 = (event) => {
-    setInputValue3(event.target.value);
-  };
+  
+  const textareaRef1 = useRef(null);
+  const textareaRef2 = useRef(null);
+  const textareaRef3 = useRef(null);
 
   const handleDivClick1 = () => {
     setIsClicked1(!isClicked1);
   };
+
   const handleDivClick2 = () => {
     setIsClicked2(!isClicked2);
   };
+
   const handleDivClick3 = () => {
     setIsClicked3(!isClicked3);
   };
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
-    
+  //글자수제한 500
+  const maxLength = 500;
+  const handleInputChange1 = (e) => {
+    if(e.target.value.length <= maxLength){
+    setInputValue1(e.target.value);
+    }
+  };
+
+  const handleInputChange2 = (e) => {
+    if(e.target.value.length <= maxLength){
+      setInputValue2(e.target.value);
+    }
+  };
+
+  const handleInputChange3 = (e) => {
+    if(e.target.value.length <= maxLength){
+      setInputValue3(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (textareaRef1.current) {
+      textareaRef1.current.style.height = 'auto';
+      textareaRef1.current.style.height = `${textareaRef1.current.scrollHeight}px`;
+    }
+  }, [inputValue1]);
+
+  useEffect(() => {
+    if (textareaRef2.current) {
+      textareaRef2.current.style.height = 'auto';
+      textareaRef2.current.style.height = `${textareaRef2.current.scrollHeight}px`;
+    }
+  }, [inputValue2]);
+
+  useEffect(() => {
+    if (textareaRef3.current) {
+      textareaRef3.current.style.height = 'auto';
+      textareaRef3.current.style.height = `${textareaRef3.current.scrollHeight}px`;
+    }
+  }, [inputValue3]);
+  //  const [showAnswer, setShowAnswer] = useState(false);
+  //   const [answerData, setAnswerData] = useState(null);
+  //   const [loading, setLoading] = useState(false);
+  //   const [error, setError] = useState(null);
+
+  //   const handleButtonClick = async () => {
+  //       setLoading(true);
+  //       setShowAnswer(false);
+  //       setError(null);
+
+  //       try {
+  //           const response = await axios.get('https://your-backend-api.com/ai-answer'); // 백엔드 API 호출
+  //           setAnswerData(response.data);
+  //           setShowAnswer(true);
+  //           setTimeout(() => {
+  //               window.scrollTo({
+  //                   top: document.documentElement.scrollHeight,
+  //                   behavior: 'smooth'
+  //               });
+  //           }, 100);
+  //       } catch (err) {
+  //           setError('데이터를 가져오는 중 오류가 발생했습니다.');
+  //       } finally {
+  //           setLoading(false);
+  //       }
+  //   };
+
+  //백엔드 자료 넘어오면 위에걸로 ㄱㄱ
+  //
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate('/aianswer');
+
+};
   return (
     <div className="container">
       <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
@@ -57,17 +122,18 @@ const AIpage = () => {
             </div>
             <div className="input-guide">*입력 안내글</div>
             <div className={`input-field1 ${isClicked1 ? 'clicked' : ''}`} onClick={handleDivClick1}>
-              <input 
-                  type="text" 
-                  value={inputValue1} 
-                  onChange={handleInputChange1} 
-                  placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 "
+              <textarea
+                ref={textareaRef1}
+                value={inputValue1}
+                className='textarea-box'
+                onChange={handleInputChange1}
+                placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 1"
+                rows="1" // 초기 행 높이 설정
               />
-              </div>
-            </div>
+          </div>
             <div className="qeustion-section">
             <div className="question-box">
-              <div className="question-num">2</div>
+              <div className="question-num">1</div>
               <div className="question-text">
                 질문 텍스트입니다. 두 줄이 넘어갈 수도 있습니다. 
                 800px을 기준으로 줄바꿈을 합니다. 
@@ -77,17 +143,19 @@ const AIpage = () => {
             </div>
             <div className="input-guide">*입력 안내글</div>
             <div className={`input-field2 ${isClicked2 ? 'clicked' : ''}`} onClick={handleDivClick2}>
-              <input 
-                  type="text" 
-                  value={inputValue2} 
-                  onChange={handleInputChange2} 
-                  placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 "
+              <textarea
+                ref={textareaRef2}
+                value={inputValue2}
+                className='textarea-box'
+                onChange={handleInputChange2}
+                placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 1"
+                rows="1" // 초기 행 높이 설정
               />
             </div>
             </div>
             <div className="qeustion-section">
             <div className="question-box">
-              <div className="question-num">3</div>
+              <div className="question-num">1</div>
               <div className="question-text">
                 질문 텍스트입니다. 두 줄이 넘어갈 수도 있습니다. 
                 800px을 기준으로 줄바꿈을 합니다. 
@@ -97,40 +165,27 @@ const AIpage = () => {
             </div>
             <div className="input-guide">*입력 안내글</div>
             <div className={`input-field3 ${isClicked3 ? 'clicked' : ''}`} onClick={handleDivClick3}>
-              <input 
-                  type="text" 
-                  value={inputValue3} 
-                  onChange={handleInputChange3} 
-                  placeholder="예시) 동해 바다에서 인스타 감성 사진찍고 쌈뽕하게 워케이션티비. 짬뽕... 매우려나?
-                  고성 해안선 둘레길, 워케이션 라운지, 원격근무"
+              <textarea
+                ref={textareaRef3}
+                value={inputValue3}
+                className='textarea-box'
+                onChange={handleInputChange3}
+                placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 1"
+                rows="1" // 초기 행 높이 설정
               />
             </div>
-                 
-            </div> 
+            </div>
           </div>
+          <button onClick={handleButtonClick} className="btn">Show AI Answer</button>
+        </div>
         <div className="right-sidebar-container">
           <div className="section1"></div>
           {/* <div className="section2"></div> */}
         </div>
       </main>
     </div>
+
   );
 }
 export default AIpage;
-// import React, { useEffect } from 'react';
-// import './DetailedPage.css';
-// import { useNavigate } from 'react-router-dom';
 
-// const DetailedPage = () => {
-//   const navigate = useNavigate();
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, []);
-
-//   const handleClick = () => {
-//     navigate('/aiproposal');
-//   };
-//   return (
-
-
-// export default DetailedPage;
