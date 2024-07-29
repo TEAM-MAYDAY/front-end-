@@ -5,9 +5,12 @@ import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Footer2 from './components/Footer2';
+import Footer3 from './components/Footer3';
+
 import './App.css';  
 import AIpage from './pages/AIpage';
 import DetailedPage from './pages/DetailedPage';
+import Error from './pages/Error';
 
 const App = () => {
     return (
@@ -17,7 +20,8 @@ const App = () => {
                 <Route path="/" element={<><Home /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
-                </Routes>
+                <Route path="/error" element={<><Error /><Footer3 /></>} />
+            </Routes>
         </Router>
             // {/* <Header />
             // <DetailedPage />
