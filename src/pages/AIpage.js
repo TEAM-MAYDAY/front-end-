@@ -42,7 +42,7 @@ const AIpage = () => {
       <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
       <main className="main">
         <div className="left-sidebar-container">
-          <img alt="illust" src="imgs/logo.png" className="illust"/>
+          <img alt="illust" src="imgs/ilust.png" className="illust"/>
         </div>
         <div className="content">
           <div className="qeustion-section">

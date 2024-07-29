@@ -27,15 +27,14 @@ import './Footer3.css';
 
 const Footer3 = () => {
     return (
-        <>
-        <footer className="footer">
+        <div>
+        <footer className="footer3">
             <img className="copyright" src="/imgs/Copyright.png" alt="Copyright" />
             {/* <img className="copyright" onClick={scrollToTop}src="/imgs/Copyright.png" alt="Copyright" /> */}
             <img className="arrow" onClick={scrollToTop} src="/imgs/arrows.png" alt="arrow" />
-
         </footer>
 
-        </>
+        </div>
     );
 };
 
