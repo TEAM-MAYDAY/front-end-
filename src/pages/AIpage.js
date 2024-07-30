@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
 import axios from 'axios';
 import AIanswer from './AIanswer';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-// import axios from 'axios';
 const AIpage = () => {
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
@@ -106,13 +105,16 @@ const AIpage = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
+  //AIpage.js -> fastAPI요청값을, AIanswer.page에 띄우고 거기로 navigate
   const handleButtonClick = async () => {
       setLoading(true);
       setError(null);
       try {
           const response = await axios.get('YOUR_FASTAPI_ENDPOINT');
-          setData(response.data);
+          // setData(response.data);
+          navigate('/aianswer', { state: { data: response.data } });
       } catch (err) {
           setError('데이터 가져오기 오류: ' + err.message);
       } finally {
@@ -193,10 +195,20 @@ const AIpage = () => {
             </div>
             </div>
           </div>
-          <button onClick={handleButtonClick} className="btn">Show AI Answer</button>
-            {loading && <div>로딩 중...</div>}
+          <button onClick={handleButtonClick} className="btn">Ai 제안서 생성</button>
+            {/* {loading && <div>로딩 중...</div>} */}
+            {loading && 
+              <div className="loading-container">
+              <div className="spinner"></div>
+                <div>
+                    <strong>Mayday AI</strong>가 제안서를 작성 중입니다...
+                    <br />
+                    잠시만 기다려주세요.
+                </div>
+             </div>
+            }
             {error && <div>{error}</div>}
-            {data && <AIanswer data={data} />}
+            {/* {data && <AIanswer data={data} />} */}
         </div>
         <div className="right-sidebar-container">
           <div className="section1"></div>

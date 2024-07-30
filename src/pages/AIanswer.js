@@ -12,9 +12,10 @@
 // export default AIanswer;
 import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
+import { useLocation } from 'react-router-dom';
 
-// const AIanswer = () => {
- const AIanswer = ({data}) => {
+const AIanswer = () => {
+//  const AIanswer = ({data}) => {
 
 useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,6 +84,9 @@ useEffect(() => {
     textareaRef3.current.style.height = `${textareaRef3.current.scrollHeight}px`;
   }
 }, [inputValue3]);
+//AIpage한테서 넘어온 정보 표시
+const location = useLocation();
+const { data } = location.state || { data: null };
 
     return (
         <div className="container">
@@ -96,23 +100,27 @@ useEffect(() => {
               <div className="question-box">
                 <div className="question-num">1</div>
                 <div className="question-text">
-                  질문 텍스트입니다. 두 줄이 넘어갈 수도 있습니다. 
-                  800px을 기준으로 줄바꿈을 합니다. 
-                  CSS 속성에서 max-width : 800px; 
-                  width : fit-content으로 설정하면 구현할 수 있습니다.
+                질문2: 여행계획이 무엇인가요?
                 </div>
               </div>
-              <pre>{JSON.stringify(data, null, 2)}</pre>
-  
+              {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+              {data ? <p>{data.answer}</p> : <p>데이터가 없습니다.</p>}
             </div>
-          </div>
+            <div className="question-box">
+                <div className="question-num">1</div>
+                <div className="question-text">
+                질문2: 여행계획이 무엇인가요?
+                </div>
+              </div>
+              {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+              {data ? <p>{data.answer}</p> : <p>데이터가 없습니다.</p>}
+            </div>
+            </main>
           <div className="right-sidebar-container">
             <div className="section1"></div>
             {/* <div className="section2"></div> */}
           </div>
-        </main>
-      </div>
-  
+          </div>
     );
 };
 
