@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import AIanswer from './AIanswer';
+// import { useNavigate } from 'react-router-dom';
 
 // import axios from 'axios';
 const AIpage = () => {
@@ -97,11 +99,26 @@ const AIpage = () => {
 
   //백엔드 자료 넘어오면 위에걸로 ㄱㄱ
   //
-  const navigate = useNavigate();
-  const handleButtonClick = () => {
-    navigate('/aianswer');
+  // const navigate = useNavigate();
+  // const handleButtonClick = () => {
+  //   navigate('/aianswer');
+  // };
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
-};
+  const handleButtonClick = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+          const response = await axios.get('YOUR_FASTAPI_ENDPOINT');
+          setData(response.data);
+      } catch (err) {
+          setError('데이터 가져오기 오류: ' + err.message);
+      } finally {
+          setLoading(false);
+      }
+  };
   return (
     <div className="container">
       <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
@@ -177,6 +194,9 @@ const AIpage = () => {
             </div>
           </div>
           <button onClick={handleButtonClick} className="btn">Show AI Answer</button>
+            {loading && <div>로딩 중...</div>}
+            {error && <div>{error}</div>}
+            {data && <AIanswer data={data} />}
         </div>
         <div className="right-sidebar-container">
           <div className="section1"></div>

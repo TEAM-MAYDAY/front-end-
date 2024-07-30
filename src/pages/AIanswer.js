@@ -13,8 +13,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
 
-const AIanswer = () => {
-    
+// const AIanswer = () => {
+ const AIanswer = ({data}) => {
+
 useEffect(() => {
     window.scrollTo(0, 0);
  }, []);    
@@ -82,6 +83,7 @@ useEffect(() => {
     textareaRef3.current.style.height = `${textareaRef3.current.scrollHeight}px`;
   }
 }, [inputValue3]);
+
     return (
         <div className="container">
         <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
@@ -100,17 +102,7 @@ useEffect(() => {
                   width : fit-content으로 설정하면 구현할 수 있습니다.
                 </div>
               </div>
-              <div className="input-guide">*입력 안내글</div>
-              <div className={`input-field1 ${isClicked1 ? 'clicked' : ''}`} onClick={handleDivClick1}>
-                <textarea
-                  ref={textareaRef1}
-                  value={inputValue1}
-                  className='textarea-box'
-                  onChange={handleInputChange1}
-                  placeholder="예시) 고성 해안선 둘레길, 워케이션 라운지, 원격근무 1"
-                  rows="1" // 초기 행 높이 설정
-                />
-            </div>
+              <pre>{JSON.stringify(data, null, 2)}</pre>
   
             </div>
           </div>
