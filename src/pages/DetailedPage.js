@@ -1,9 +1,30 @@
 import React, { useEffect } from 'react';
 import './DetailedPage.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+const regionMap = {
+  seoul: '서울',
+  gangwon: '강원도',
+  jeju: '제주도',
+  busan: '부산',
+  chungnam: '충남'
+};
 
 const DetailedPage = () => {
-  const navigate = useNavigate();
+  const location = useLocation(); // 전달된 상태를 받기 위한 useLocation 훅
+  const { location: locationData } = location.state || { location: {} }; // 전달된 데이터 추출
+    // 태그 생성
+    const tags = [
+      locationData.address,
+      regionMap[locationData.region] || locationData.region,
+      locationData.monitor && '모니터',
+      locationData.conferenceRoom && '회의실',
+      locationData.parking && '주차공간',
+      locationData.phoneBooth && '폰부스',
+      locationData.officeType
+    ].filter(Boolean); // truthy 값만 필터링
+    
+  const navigate = useNavigate(); //ai입력페이지로 이동
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -13,7 +34,7 @@ const DetailedPage = () => {
   };
   return (
     <div className="container">
-      <div className="gallery">
+      {/* <div className="gallery">
         <img className="large-image" src="/imgs/Landing-BG.png" alt="Gallery" />
         <img className="normal-image" src="/imgs/Landing-BG.png" alt="Gallery" />
         <img className="TopRightRound-image" src="/imgs/Landing-BG.png" alt="Gallery" />
@@ -49,7 +70,40 @@ const DetailedPage = () => {
                 <h5>본문(숙소 설명 및)</h5>
             </div>
           </section>
-        </div>
+        </div> */}
+    <div className="gallery">
+        <img className="large-image" src={locationData.imageUrl} alt="Gallery" /> {/* 이미지 URL 사용 */}
+    </div>
+    <main className="main">
+      <div className="content">
+        <section className="content-header">
+          <h2>{locationData.name}</h2> {/* 이름 출력 */}
+          <div className="lined-heading">한줄 소개글</div>
+        </section>
+        <section className="content-tagbar">
+          {tags.map((tag, index) => (
+            <div key={index} className="tag"># {tag}</div> 
+          ))}
+        </section>
+        <section className="content-detail">
+          <div className="share-office">
+            <h2>공유 오피스</h2>
+            <h5>본문(숙소 설명 및)</h5>
+          </div>
+          <div className="share-office">
+            <h2>숙소</h2>
+            <h5>본문(숙소 설명 및)</h5>
+          </div>
+          <div className="share-office">
+            <h2>제공 혜택</h2>
+            <h5>본문(숙소 설명 및)</h5>
+          </div>
+          <div className="share-office">
+            <h2>기타 사항</h2>
+            <h5>본문(숙소 설명 및)</h5>
+          </div>
+        </section>
+      </div>
         <div className="sidebar-container">
           <div className="alarm-section">
             <button onClick={handleClick} className="alarm">Ai 도움받고 신청하기</button>

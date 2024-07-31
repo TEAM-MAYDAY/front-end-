@@ -1,0 +1,50 @@
+[
+    {
+        "locationId": 5,
+        "name": "장소5",
+        "address": "주소5",
+        "region": "jeju",
+        "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
+        "monitor": true,
+        "conferenceRoom": false,
+        "officeType": "cafe",
+        "parking": true,
+        "phoneBooth": true
+    },
+    {
+        "locationId": 5,
+        "name": "장소5",
+        "address": "주소5",
+        "region": "jeju",
+        "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
+        "monitor": true,
+        "conferenceRoom": false,
+        "officeType": "cafe",
+        "parking": true,
+        "phoneBooth": true
+    },
+    {
+        "locationId": 5,
+        "name": "장소5",
+        "address": "주소5",
+        "region": "jeju",
+        "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
+        "monitor": true,
+        "conferenceRoom": false,
+        "officeType": "cafe",
+        "parking": true,
+        "phoneBooth": true
+    },
+    {
+        "locationId": 5,
+        "name": "장소5",
+        "address": "주소5",
+        "region": "jeju",
+        "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
+        "monitor": true,
+        "conferenceRoom": false,
+        "officeType": "cafe",
+        "parking": true,
+        "phoneBooth": true
+    }
+]

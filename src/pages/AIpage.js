@@ -84,14 +84,18 @@ const AIpage = () => {
       setLoading(true);
       setError(null);
       try {
-          const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
-          {
-            description: description,
-            answer1: inputValue1,
-            answer2: inputValue2,
-            answer3: inputValue3
-          });
-          console.log(response.data)
+        // console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
+        //   const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
+        //   {
+        //     description: description,
+        //     answer1: inputValue1,
+        //     answer2: inputValue2,
+        //     answer3: inputValue3
+        //   });
+         // 로컬 JSON 파일에서 데이터 가져오기
+        const response = await axios.get('/data.json');
+        console.log(response.data);
+        console.log(response.data)
           // setData(response.data);
           navigate('/aianswer', { state: { data: response.data } });
       } catch (err) {
@@ -100,6 +104,9 @@ const AIpage = () => {
           setLoading(false);
       }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="container">
       <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
@@ -179,7 +186,7 @@ const AIpage = () => {
             }
             {error && <div>{error}</div>}
             {/* {data && <AIanswer data={data} />} */}
-        </div>
+          </div>
         <div className="right-sidebar-container">
           <div className="section1"></div>
           {/* <div className="section2"></div> */}

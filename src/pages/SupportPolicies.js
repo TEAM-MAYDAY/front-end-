@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 // import React, { useState, useEffect } from 'react';
 import './SupportPolicies.css';
 
@@ -48,24 +48,100 @@ const SupportPolicies = () => {
     //         ));
     //     }
     // }, [selectedFilters, allCards]);
-      const [clickedButtons, setClickedButtons] = useState({
-        monitor: false,
-        cafeStyleOffice: false,
-        coworkingOffice: false,
-        Parking: false,
-        PhoneBooth: false
-    });
-      const handleButtonClick = (buttonName) => {
-          setClickedButtons(prevState => ({
-              ...prevState,
-              [buttonName]: !prevState[buttonName],
-          }));
-      };
-      const navigate = useNavigate();
 
-      const handleDivClick = () => {
-        navigate('/detailed');
+    //jeju -> 제주도 이런식으로 찐화면에 뜨는건 한글로 함.
+    const regionMap = {
+        seoul: '서울',
+        gangwon: '강원도',
+        jeju: '제주도',
+        busan: '부산',
+        chungnam: '충남'
       };
+      const getRegionName = (region) => {
+        return regionMap[region] || region;
+      };
+
+    const [locations, setLocations] = useState([]);
+    const [filteredLocations, setFilteredLocations] = useState([]);
+    const [clickedButtons, setClickedButtons] = useState({
+      monitor: false,
+      conferenceRoom: false,
+      cafe: false,
+      coworkingOffice: false,
+      parking: false,
+      phoneBooth: false,
+      seoul: false,
+      gangwon: false,
+      jeju: false,
+      busan: false,
+      chungnam: false
+    });
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get('/data2.json');
+          setLocations(response.data);
+          setFilteredLocations(response.data); // 처음에는 모든 데이터를 표시
+        } catch (err) {
+          setError('데이터를 가져오는 데 오류가 발생했습니다.');
+        } finally {
+          setLoading(false);
+        }
+      };    
+      fetchData();
+    }, []);
+
+  // 필터 상태와 location 데이터를 로드한 후에 필터링 함수 호출
+  useEffect(() => {
+    if (locations.length > 0) {
+      filterLocations(clickedButtons);
+    }
+  }, [clickedButtons, locations]);
+
+  const handleButtonClick = (key) => {
+    setClickedButtons(prevState => ({
+      ...prevState,
+      [key]: !prevState[key]
+    }));
+  };
+
+  const filterLocations = (filters) => {
+    if (!filters) return; // filters가 정의되지 않은 경우를 처리
+
+    const noRegionSelected = !filters.seoul && !filters.gangwon && !filters.jeju && !filters.busan && !filters.chungnam;
+
+    const filtered = locations.filter(location => {
+      const regionMatch = noRegionSelected || filters[location.region];
+      
+      const attributeMatch = (!filters.monitor || location.monitor)
+        && (!filters.conferenceRoom || location.conferenceRoom)
+        && (!filters.cafe || location.officeType === 'cafe')
+        && (!filters.coworkingOffice || location.officeType === 'coworkingOffice') //백엔드에서 none카페형 오피스를 정의한걸로 이름 바꾸기 ㄲ
+        && (!filters.parking || location.parking)
+        && (!filters.phoneBooth || location.phoneBooth);
+      
+      return regionMatch && attributeMatch;
+    });
+
+    setFilteredLocations(filtered);
+  };
+    
+    //   const handleButtonClick = (buttonName) => {
+    //       setClickedButtons(prevState => ({
+    //           ...prevState,
+    //           [buttonName]: !prevState[buttonName],
+    //       }));
+    //   };
+      const navigate = useNavigate(); //각 컨테이너 눌렀을때 DetailedPage.js로이동
+
+      const handleCardClick = (location) => {
+        navigate('/detailed', { state: { location } }); // 페이지 이동 및 데이터 전달
+      };
+    
 
   return (
     <div className="support-policies">
@@ -73,6 +149,7 @@ const SupportPolicies = () => {
         <img className="text-image" alt="supportPolicies-img" src="/imgs/textImg.png" />
       </div>
       <div className="button-container">
+          <div className="button-row">
                 <button
                     className={`category-button ${clickedButtons.monitor ? 'selected' : ''}`}
                     onClick={() => handleButtonClick('monitor')}
@@ -80,8 +157,14 @@ const SupportPolicies = () => {
                     모니터
                 </button>
                 <button
-                    className={`category-button ${clickedButtons.cafeStyleOffice ? 'selected' : ''}`}
-                    onClick={() => handleButtonClick('cafeStyleOffice')}
+                    className={`category-button ${clickedButtons.conferenceRoom ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('conferenceRoom')}
+                >
+                    회의실
+                </button>
+                <button
+                    className={`category-button ${clickedButtons.cafe ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('cafe')}
                 >
                     카페형 오피스
                 </button>
@@ -92,132 +175,66 @@ const SupportPolicies = () => {
                     공유형 오피스
                 </button>
                 <button
-                    className={`category-button ${clickedButtons.Parking ? 'selected' : ''}`}
-                    onClick={() => handleButtonClick('Parking')}
+                    className={`category-button ${clickedButtons.parking ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('parking')}
                 >
                     주차공간
                 </button>
                 <button
-                    className={`category-button ${clickedButtons.PhoneBooth ? 'selected' : ''}`}
-                    onClick={() => handleButtonClick('PhoneBooth')}
+                    className={`category-button ${clickedButtons.phoneBooth ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('phoneBooth')}
                 >
-                    PhoneBooth
+                    phoneBooth
                 </button>
-      </div>
-      <div className="cards">
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
             </div>
-            <div className="card-container"onClick={handleDivClick} >
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container"onClick={handleDivClick} >
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
-            </div>
-            <div className="card-container" onClick={handleDivClick}>
-                <div className="card-image">
-                    <img src="/imgs/Landing-BG.png" alt="card-image" />
-                </div>
-                <div className="card-content">
-                    <div className="support-badge">10만원지원금</div>
-                        <h2>세인트존스호텔</h2>
-                        <h5>강원 강릉</h5>
-                        <p>2박 3일</p>
-                </div>
+            <div className="button-row">
+                <button
+                    className={`category-button ${clickedButtons.seoul ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('seoul')}
+                >
+                    서울
+                </button>
+                <button
+                    className={`category-button ${clickedButtons.gangwon ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('gangwon')}
+                >
+                    강원
+                </button>
+                <button
+                    className={`category-button ${clickedButtons.jeju ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('jeju')}
+                >
+                    제주
+                </button>
+                <button
+                    className={`category-button ${clickedButtons.busan ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('busan')}
+                >
+                    부산
+                </button>
+                <button
+                    className={`category-button ${clickedButtons.chungnam ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('chungnam')}
+                >
+                    충남
+                </button>
             </div>
       </div>
       {/* <div className="cards">
-                {filteredCards.map(card => (
+            <div className="card-container" onClick={handleDivClick}>
+                <div className="card-image">
+                    <img src="/imgs/Landing-BG.png" alt="card-image" />
+                </div>
+                <div className="card-content">
+                    <div className="support-badge">10만원지원금</div>
+                        <h2>세인트존스호텔</h2>
+                        <h5>강원 강릉</h5>
+                        <p>2박 3일</p>
+                </div>
+            </div>
+      </div> */}
+      <div className="cards">
+                {/* {filteredCards.map(card => (
                     <div className="card-container" key={card.id}>
                         <div className="card-image">
                             <img src={card.imageUrl} alt={card.title} />
@@ -229,8 +246,24 @@ const SupportPolicies = () => {
                             <p>{card.duration}</p>
                         </div>
                     </div>
-                ))}
-            </div> */}
+                ))} */}
+        {filteredLocations.map((location, index) => (
+          // key 속성 수정: location.locationId에 index를 추가하여 고유한 값을 사용
+        //   <div key={location.locationId + '-' + index} className="card-container">
+        <div key={location.locationId + '-' + index} className="card-container" onClick={() => handleCardClick(location)}> 
+           <div className="card-image">
+              <img src={location.imageUrl} alt={`${location.name} 이미지`} />
+            </div>
+            <div className="card-content">
+              <div className="support-badge">10만원지원금</div>
+              <h2>{location.name}</h2>
+              {/* <h5>{`${location.region} ${location.address}`}</h5> */}
+              <h5>{`${getRegionName(location.region)} ${location.address}`}</h5>
+              <p>2박 3일</p>
+            </div>
+          </div>
+        ))}
+        </div>
     </div>
   );
 };
