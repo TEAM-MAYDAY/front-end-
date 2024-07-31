@@ -84,6 +84,7 @@ useEffect(() => {
     textareaRef3.current.style.height = `${textareaRef3.current.scrollHeight}px`;
   }
 }, [inputValue3]);
+
 //AIpage한테서 넘어온 정보 표시
 const location = useLocation();
 const { data } = location.state || { data: null };
