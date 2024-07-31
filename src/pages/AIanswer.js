@@ -95,27 +95,61 @@ const { data } = location.state || { data: null };
           <div className="left-sidebar-container">
             <img alt="illust" src="imgs/ilust.png" className="illust"/>
           </div>
-          <div className="content">
-            <div className="qeustion-section">
-              <div className="question-box">
-                <div className="question-num">1</div>
-                <div className="question-text">
-                질문2: 여행계획이 무엇인가요?
+            <div className="content">
+              <div className="qeustion-section">
+                <div className="question-box">
+                  <div className="question-num">1</div>
+                  <div className="question-text">
+                    지원동기
+                  </div>
                 </div>
+                <div className="input-guide"></div>
+                <div className='input-field1'>
+                  <textarea
+                  // data[0].content ~ data[2].content 값으로 데이터 접근
+                    value={data[0].content}
+                    className='textarea-box'
+                    placeholder="데이터가 없습니다!"
+                    rows="5" // 초기 행 높이 설정
+                  />
               </div>
-              {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-              {data ? <p>{data.answer}</p> : <p>데이터가 없습니다.</p>}
-            </div>
-            <div className="question-box">
-                <div className="question-num">1</div>
-                <div className="question-text">
-                질문2: 여행계획이 무엇인가요?
+              <div className="qeustion-section">
+                <div className="question-box">
+                  <div className="question-num">2</div>
+                  <div className="question-text">
+                    여행계획
+                  </div>
                 </div>
+                <div className="input-guide"></div>
+                <div className='input-field1'>
+                  <textarea
+                    value={data[1].content}
+                    className='textarea-box'
+                    placeholder="데이터가 없습니다!"
+                    rows="5" // 초기 행 높이 설정
+                  />
               </div>
-              {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-              {data ? <p>{data.answer}</p> : <p>데이터가 없습니다.</p>}
+              <div className="qeustion-section">
+                <div className="question-box">
+                  <div className="question-num">3</div>
+                  <div className="question-text">
+                    홍보계획
+                  </div>
+                </div>
+                <div className="input-guide"></div>
+                <div className='input-field1'>
+                  <textarea
+                    value={data[2].content}
+                    className='textarea-box'
+                    placeholder="데이터가 없습니다!"
+                    rows="5" // 초기 행 높이 설정
+                  />
+              </div>
             </div>
-            </main>
+            </div>
+            </div>
+            </div>
+        </main>
           <div className="right-sidebar-container">
             <div className="section1"></div>
             {/* <div className="section2"></div> */}
