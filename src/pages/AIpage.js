@@ -84,26 +84,41 @@ const AIpage = () => {
       setLoading(true);
       setError(null);
       try {
-        // console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
-        //   const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
-        //   {
-        //     description: description,
-        //     answer1: inputValue1,
-        //     answer2: inputValue2,
-        //     answer3: inputValue3
-        //   });
-         // 로컬 JSON 파일에서 데이터 가져오기
-        const response = await axios.get('/data.json');
-        console.log(response.data);
-        console.log(response.data)
-          // setData(response.data);
-          navigate('/aianswer', { state: { data: response.data } });
-      } catch (err) {
+        console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
+              // 로컬 스토리지에서 사용자 정보 가져오기
+              const user = JSON.parse(localStorage.getItem('user'));
+                    if (!user) {
+                        setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+                        setLoading(false);
+                        return;
+                    }
+              // user 객체에서 job, interest, purpose 추출
+        // user 객체에서 job, interest, purpose 추출
+        const job = user.job; // 변수명 수정
+        const interest = user.interest; // 변수명 수정
+        const purpose = user.purpose; // 변수명 수정
+        
+          const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
+          {
+            description: description,
+            answer1: inputValue1,
+            answer2: inputValue2,
+            answer3: inputValue3,
+            job: job,
+            interest: interest,
+            purpose: purpose
+          });
+          console.log(response.data);
+          // navigate('/aianswer', { state: { data: response.data } });
+          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, interest, purpose } } });
+        } catch (err) {
           setError('데이터 가져오기 오류: ' + err.message);
       } finally {
           setLoading(false);
       }
   };
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

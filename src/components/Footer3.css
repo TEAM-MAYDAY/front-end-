@@ -9,16 +9,14 @@ div .footer3 {
   background-color: #f8f8f8;
 
 }
-\.arrow{
-width: 40px;
-height: 220px;
-/* background-color: red; */
-z-index:2;
-transition: transform 0.7s ease  opacity 0.5s ;
-/* transform: scale(1,0.16);  */
-position: relative;
-top:60px;
-left:384px;
+.arrow3{
+  width: 40px;
+  height: 40px;
+  z-index:2;
+  transition: transform 0.7s ease  opacity 0.5s ;
+  position: relative;
+  top:150px;
+  left:384px;
 }
 
 .arrow:hover{

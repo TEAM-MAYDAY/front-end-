@@ -28,10 +28,10 @@ import './Footer2.css';
 const Footer2 = () => {
     return (
         <>
-        <footer className="footer">
+        <footer className="footer2">
             <img className="copyright" src="/imgs/Copyright.png" alt="Copyright" />
             {/* <img className="copyright" onClick={scrollToTop}src="/imgs/Copyright.png" alt="Copyright" /> */}
-            <img className="arrow" onClick={scrollToTop} src="/imgs/arrows.png" alt="arrow" />
+            <img className="arrow2" onClick={scrollToTop} src="/imgs/arrows.png" alt="arrow" />
 
         </footer>
 

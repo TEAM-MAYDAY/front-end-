@@ -49,7 +49,7 @@ const Footer = () => {
         <footer className={`footer ${isBottom ? 'visible' : ''}`}>
             {/* <img className="copyright" src="/imgs/Copyright.png" alt="Copyright" /> */}
             <img className="copyright" onClick={scrollToTop}src="/imgs/Copyright.png" alt="Copyright" /> 
-            <img className="arrow" onClick={scrollToTop} src="/imgs/arrows.png" alt="arrow" />
+            <img className="arrow1" onClick={scrollToTop} src="/imgs/arrows.png" alt="arrow" />
         </footer>
         </>
                 // <>

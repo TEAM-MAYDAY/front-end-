@@ -1,20 +1,16 @@
-// import React from 'react';
-
-// const AIanswer = ({ data }) => {
-//     return (
-//         <div className="aianswer-container">
-//             <h2>AI Answer</h2>
-//             <p>{data.answer}</p> {/* 백엔드에서 받은 데이터 사용 */}
-//         </div>
-//     );
-// };
-
-// export default AIanswer;
 import React, { useState, useEffect, useRef } from 'react';
 import './AIanswer.css';
 import { useLocation } from 'react-router-dom';
 
 const AIanswer = () => {
+
+  const location = useLocation();
+  const { data, userInfo } = location.state || { data: {}, userInfo: {} };
+      // 데이터가 존재하는지 확인하고, 기본값을 설정합니다.
+      const content = data.length > 0 ? data[0].content : "No content available";
+      const job = userInfo.job || "N/A";
+      const interest = userInfo.interest || "N/A";
+      const purpose = userInfo.purpose || "N/A";
 
 useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,8 +46,10 @@ useEffect(() => {
 }, [inputValue3]);
 
 //AIpage한테서 넘어온 정보 표시
-const location = useLocation();
-const { data } = location.state || { data: null };
+// const location = useLocation();
+// const { data } = location.state || { data: null };
+// const location = useLocation();
+// const { data, userInfo } = location.state || { data: {}, userInfo: {} };
 
 const backpage = () => {
   window.history.back();
@@ -76,8 +74,10 @@ const backpage = () => {
                 <div className="input-guide"></div>
                 <div className='input-field1'>
                   <textarea
+                    ref={textareaRef1}
                   // data[0].content ~ data[2].content 값으로 데이터 접근
-                    value={data[0].content}
+                    // value={data[0].content}
+                    value={data[0]?.content || ''} // 조건부 렌더링 및 기본값 설정
                     className='textarea-box'
                     placeholder="데이터가 없습니다!"
                     rows="5" // 초기 행 높이 설정
@@ -93,7 +93,9 @@ const backpage = () => {
                 <div className="input-guide"></div>
                 <div className='input-field1'>
                   <textarea
-                    value={data[1].content}
+                    ref={textareaRef2}
+                    // value={data[1].content}
+                    value={data[1]?.content || ''} // 조건부 렌더링 및 기본값 설정
                     className='textarea-box'
                     placeholder="데이터가 없습니다!"
                     rows="5" // 초기 행 높이 설정
@@ -109,7 +111,9 @@ const backpage = () => {
                 <div className="input-guide"></div>
                 <div className='input-field1'>
                   <textarea
-                    value={data[2].content}
+                    ref={textareaRef3}
+                    // value={data[2].content}
+                    value={data[2]?.content || ''} // 조건부 렌더링 및 기본값 설정
                     className='textarea-box'
                     placeholder="데이터가 없습니다!"
                     rows="5" // 초기 행 높이 설정

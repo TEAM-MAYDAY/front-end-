@@ -1,5 +1,4 @@
-import React from 'react';
-// import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -10,11 +9,26 @@ import Footer3 from './components/Footer3';
 import './App.css';  
 import AIpage from './pages/AIpage';
 import AIanswer from './pages/AIanswer.js';
-
 import DetailedPage from './pages/DetailedPage';
 import Error from './pages/Error';
+import LoginForm from './pages/LoginForm';
+import SignupFormpage from './pages/SignupFormpage';
 
+//후기(임의의 값) 클릭시, errorpage로 navigate
 const App = () => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      if (storedUser) {
+        setUser(storedUser);
+      }
+    }, []);
+    
+    useEffect(() => {
+        // user 상태가 변경될 때마다 로컬 스토리지에 저장
+        localStorage.setItem('user', JSON.stringify(user));
+      }, [user]);
     return (
         <Router>
             <Header />
@@ -24,6 +38,8 @@ const App = () => {
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />
+                <Route path="/login" element={ <><LoginForm setUser={setUser} /> <Footer2 /> </> } />
+                <Route path="/signup" element={<><SignupFormpage /> <Footer2 /> </>} />
             </Routes>
         </Router>
             // {/* <Header />

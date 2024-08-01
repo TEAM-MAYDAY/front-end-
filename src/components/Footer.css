@@ -1,47 +1,40 @@
  /* Footer.css */
 
-.footer {
-    width: 100%;
-    text-align: center;
-    /* position: fixed; */
-    bottom: -100%; 
-    left: 0;
-    transition: bottom 0.5s ease-in-out;
-}
-  
-  .footer.visible {
-    bottom: 2%; /* Slide footer into view */
-  }
-  
-  .footer img {
-    height: 250px;
-  }
-  /*  */
-  
-.footer {
+
+.footer.visible {
   width:auto;
   text-align: center;
-  margin-top: 235px;
+  margin-top: 220px;
   position: relative; 
-  height: auto;
+  height: 251px;
   transition: transform 0.5s ease;
-
+  bottom: 5%;
 }
+  
+/* .footer img {
+  height: 250px;
+} */
 
-.arrow{
+
+.arrow1{
 width: 40px;
+height: 40px;
 /* height: 10px; */
 z-index:2;
 transition: transform 0.7s ease  opacity 0.5s ;
-transform: scale(1,0.16); 
+transform: scale(1,1); 
+position: absolute;
+/* top:60px;
+left:384px; */
 position: relative;
-top:60px;
+
+top:150px;
 left:384px;
 }
 
-.arrow:hover{
+.arrow1:hover{
 cursor: pointer;
-transform: scale(1.2,0.192);
+transform: scale(1.1,1.1);
 opacity: 0.9;
 }
 

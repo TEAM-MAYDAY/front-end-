@@ -3,11 +3,13 @@ import './Header.css';
 
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+// const Header = () => {
+    const Header = ({ user }) => {
 
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate('/error');
+        // navigate('/error');
+        navigate('/login');
     };
 
     return (
@@ -20,7 +22,12 @@ const Header = () => {
                     <span className="header-link">워케이션이란?</span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
-                    <span className="header-link" onClick={handleClick}>로그인　　　</span>
+                    {user ? (
+                        <span className="header-link">{user.name}님 환영합니다!</span>
+                    ) : (
+                        <span className="header-link" onClick={handleClick}>로그인　　　</span>
+                    )}
+                    {/* <span className="header-link" onClick={handleClick}>로그인　　　</span> */}
                 </nav>
             </div>
         </header>
