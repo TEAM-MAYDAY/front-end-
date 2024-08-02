@@ -1,19 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DetailedPage.css';
+import axios from 'axios';
+import { useParams } from 'react-router-dom'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const regionMap = {
-  seoul: '서울',
-  gangwon: '강원도',
-  jeju: '제주도',
-  busan: '부산',
-  chungnam: '충남'
-};
+// const regionMap = {
+//   seoul: '서울',
+//   gangwon: '강원도',
+//   jeju: '제주도',
+//   busan: '부산',
+//   chungnam: '충남'
+// };
+  
 
 const DetailedPage = () => {
   const location = useLocation(); // 전달된 상태를 받기 위한 useLocation 훅
-  const { location: locationData } = location.state || { location: {} }; // 전달된 데이터 추출
-    // 태그 생성
+  // const { location: locationData } = location.state || { location: {} }; // 전달된 데이터 추출
+  const { locationId } = useParams(); // URL에서 locationId를 가져옴
+  const [locationData, setLocationData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/info/${locationId}`);
+        setLocationData(response.data);
+        console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
+      } catch (err) {
+        setError('데이터를 가져오는 데 오류가 발생했습니다.');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []); 
+
+  // 태그 생성
     const tags = [
       // locationData.address,
       // regionMap[locationData.region] || locationData.region,
@@ -23,8 +46,11 @@ const DetailedPage = () => {
       locationData.phoneBooth && '폰부스',
       locationData.officeType
     ].filter(Boolean); // truthy 값만 필터링
+    console.log('Tags:', tags); // Tags 로그 출력
+
     
   const navigate = useNavigate(); //ai입력페이지로 이동
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

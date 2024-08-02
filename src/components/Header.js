@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
         // navigate('/error');
         navigate('/login');
     };
+    const handleClick2 = () => {
+        navigate('/error');
+    };
 
     return (
         <header className="header">
@@ -19,7 +22,7 @@ import { useNavigate } from 'react-router-dom';
                     <img src="/imgs/logo.png" alt="Logo" className="logo" />
                 </div>
                 <nav className="header-links">
-                    <span className="header-link">워케이션이란?</span>
+                    <span className="header-link" onClick={handleClick2}>워케이션이란? </span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
                     {user ? (

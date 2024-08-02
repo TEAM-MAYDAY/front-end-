@@ -12,7 +12,7 @@ function LoginForm({ setUser }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://ec2-3-38-105-117.ap-northeast-2.compute.amazonaws.com:8080/api/v1/login', {
+            const response = await axios.post('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/login', {
                 id,
                 password
             });
@@ -23,8 +23,19 @@ function LoginForm({ setUser }) {
             console.log(setMessage);
             navigate('/');
         } catch (error) {
-            setMessage('로그인 실패');
-            console.error(error);
+            if (!error.response) {
+                // 서버와의 연결 실패 (네트워크 오류)
+                setMessage('서버와 연결할 수 없습니다. 네트워크 상태를 확인하세요.');
+                console.error('서버와 연결할 수 없습니다.', error);
+            } else if (error.response.status >= 500) {
+                // 서버 오류
+                setMessage('서버 오류가 발생했습니다. 잠시 후 다시 시도하세요.');
+                console.error('서버 오류', error.response.status);
+            } else {
+                // 기타 오류 (로그인 실패 등)
+                setMessage('로그인 실패. 아이디와 비밀번호를 확인하세요.');
+                console.error('로그인 실패', error.response.status);
+            }
         }
     };
 
@@ -40,7 +51,7 @@ function LoginForm({ setUser }) {
             </div>
             <div>
                 <label>Password:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" value={password} autocomplete="current-password" onChange={(e) => setPassword(e.target.value)} />
             </div>
             <button type="submit">Login</button>
             <button type="button" onClick={handleSignupClick}>회원가입으로 이동</button>

@@ -16,7 +16,7 @@ const Error = () => {
   return (
     <div className="errorpage">
       <div className="card">
-        <img src="imgs/panda.png" alt="Panda" className="panda-image" />
+        <img src="imgs/panda.gif" alt="Panda" className="panda-image" />
         <p /><h1 className="status-code1">503</h1>
         <h1 className="status-code2">: Unavailable Service</h1>
         <p className="message">현재 준비 중인 기능입니다.</p>

@@ -128,9 +128,9 @@
   vertical-align: middle;
 }
 .card-content p {
-  position:   absolute;
+  position:   relative;
   color: #555;
-  margin-top: 255px;
+  margin-top: 285px;
   margin-left: 280px;
   display: inline-block;
   vertical-align: middle;
@@ -138,9 +138,10 @@
 
 }
 .card-content h5 {
-  position:   absolute;
+  /* position:   absolute; */
+  position: relative;
   color: #000000;
-  margin-top: 290px;
+  margin-top: 300px;
   margin-left: 20px;
   display: inline-block;
   vertical-align: middle;

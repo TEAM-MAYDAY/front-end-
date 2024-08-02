@@ -57,6 +57,7 @@ const SupportPolicies = () => {
         busan: '부산',
         chungnam: '충남'
       };
+
       const getRegionName = (region) => {
         return regionMap[region] || region;
       };
@@ -80,14 +81,52 @@ const SupportPolicies = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const response = await axios.get('/data2.json');
+    //       setLocations(response.data);
+    //       setFilteredLocations(response.data); // 처음에는 모든 데이터를 표시
+    //     } catch (err) {
+    //       setError('데이터를 가져오는 데 오류가 발생했습니다.');
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };    
+    //   fetchData();
+    // }, []);
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('/data2.json');
-          setLocations(response.data);
-          setFilteredLocations(response.data); // 처음에는 모든 데이터를 표시
+          const response = await axios.get('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/all');
+          if (response.status !== 200) {
+            console.log("HTTP오류");
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const items = response.data.items;
+          if (!items || items.length === 0) {
+            console.log("데이터 X");
+            throw new Error('데이터가 없습니다.');
+          }
+          setLocations(items);
+          setFilteredLocations(items); // 처음에는 모든 데이터를 표시
         } catch (err) {
-          setError('데이터를 가져오는 데 오류가 발생했습니다.');
+          if (err.response) {
+            // 서버 응답이 있는 경우 (2xx 범위 외의 상태 코드)
+            if (err.response.status === 404) {
+              console.log('서버에서 데이터를 찾을 수 없습니다.');
+            } else if (err.response.status === 500) {
+              console.log('서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.');
+            } else {
+              console.log(`서버 오류: ${err.response.status}`);
+            }
+          } else if (err.request) {
+            // 요청이 이루어졌으나 응답을 받지 못한 경우
+            console.log('서버와 통신할 수 없습니다. 네트워크를 확인해주세요.');
+          } else {
+            // 기타 오류
+            console.log(`오류가 발생했습니다: ${err.message}`);
+          }
         } finally {
           setLoading(false);
         }
@@ -130,12 +169,6 @@ const SupportPolicies = () => {
     setFilteredLocations(filtered);
   };
     
-    //   const handleButtonClick = (buttonName) => {
-    //       setClickedButtons(prevState => ({
-    //           ...prevState,
-    //           [buttonName]: !prevState[buttonName],
-    //       }));
-    //   };
       const navigate = useNavigate(); //각 컨테이너 눌렀을때 DetailedPage.js로이동
 
       const handleCardClick = (location) => {
@@ -234,19 +267,6 @@ const SupportPolicies = () => {
             </div>
       </div> */}
       <div className="cards">
-                {/* {filteredCards.map(card => (
-                    <div className="card-container" key={card.id}>
-                        <div className="card-image">
-                            <img src={card.imageUrl} alt={card.title} />
-                        </div>
-                        <div className="card-content">
-                            <div className="support-badge">{card.support}</div>
-                            <h2>{card.title}</h2>
-                            <p>{card.location}</p>
-                            <p>{card.duration}</p>
-                        </div>
-                    </div>
-                ))} */}
         {filteredLocations.map((location, index) => (
           // key 속성 수정: location.locationId에 index를 추가하여 고유한 값을 사용
         //   <div key={location.locationId + '-' + index} className="card-container">
@@ -255,7 +275,7 @@ const SupportPolicies = () => {
               <img src={location.imageUrl} alt={`${location.name} 이미지`} />
             </div>
             <div className="card-content">
-              <div className="support-badge">10만원지원금</div>
+              {/* <div className="support-badge">10만원지원금</div> */}
               <h2>{location.name}</h2>
               {/* <h5>{`${location.region} ${location.address}`}</h5> */}
               <h5>{`${getRegionName(location.region)} ${location.address}`}</h5>
