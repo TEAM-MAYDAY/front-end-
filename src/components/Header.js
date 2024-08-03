@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
     const navigate = useNavigate();
     const handleClick = () => {
-        // navigate('/error');
         navigate('/login');
     };
     const handleClick2 = () => {
@@ -25,12 +24,11 @@ import { useNavigate } from 'react-router-dom';
                     <span className="header-link" onClick={handleClick2}>워케이션이란? </span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
-                    {user ? (
+                    {user ? ( // user 존재 -> 환영 메시지 표시
                         <span className="header-link">{user.name}님 환영합니다!</span>
-                    ) : (
+                    ) : ( // user 존재 x ->로그인 버튼 표시
                         <span className="header-link" onClick={handleClick}>로그인　　　</span>
                     )}
-                    {/* <span className="header-link" onClick={handleClick}>로그인　　　</span> */}
                 </nav>
             </div>
         </header>

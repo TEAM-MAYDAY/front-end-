@@ -16,22 +16,30 @@ import SignupFormpage from './pages/SignupFormpage';
 
 //후기(임의의 값) 클릭시, errorpage로 navigate
 const App = () => {
+
+    // useEffect(() => {
+    //   const storedUser = JSON.parse(localStorage.getItem('user'));
+    //   if (storedUser) {
+    //     setUser(storedUser);
+    //   }
+    // }, []);
+    
+    // useEffect(() => {
+    //     // user 상태가 변경될 때마다 로컬 스토리지에 저장
+    //     localStorage.setItem('user', JSON.stringify(user));
+    //   }, [user]);
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-      const storedUser = JSON.parse(localStorage.getItem('user'));
-      if (storedUser) {
-        setUser(storedUser);
-      }
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
     }, []);
-    
-    useEffect(() => {
-        // user 상태가 변경될 때마다 로컬 스토리지에 저장
-        localStorage.setItem('user', JSON.stringify(user));
-      }, [user]);
+
     return (
         <Router>
-            <Header />
+            <Header user={user} /> {/* Header에 user prop 전달 */}
             <Routes>
                 <Route path="/" element={<><Home /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />

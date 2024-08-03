@@ -3,10 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 
-function LoginForm({ setUser }) {
+const LoginForm = ({ setUser }) => { // setUser prop 추가
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
