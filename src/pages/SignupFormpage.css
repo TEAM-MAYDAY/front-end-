@@ -131,17 +131,155 @@ input.filled {
   bottom: 35px;
   margin-left: 448px;
 }
-.nextstep:hover{
+.finalstep{
+  display: flex;
+  width:40px;
+  height: 40px;
+  margin-bottom: 35px;
+  margin-left: 448px;
+}
+.finalstep:hover{
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* success-message보다 아래에 위치하도록 설정 */
+}
+.success-message {
+  text-align: center;
+  position: absolute;
+  padding: 20px;
+  width: 446px;
+  height: 308px;
+  align-items: center;
+  background-color: #ffffff;
+  /* background-color: red; */
+  border-radius: 10px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 24px;
+  /* padding: 24px 48px; */
+  z-index: 2;
+  margin: 0 500px;
+  margin-top:150px;
+  z-index:1000;
+}
+.success-message h4{
+  color: rgba(52, 120, 54, 1);
+  font-family: "SUIT Variable-Light", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 19.2px;
+  text-align: center;
+  margin: 0 0;
+}
+.success-message h2{
+  color:rgba(52, 120, 54, 1);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 12px;
+  margin: 0 0;
+}
+.succes-bird{
+  width:60px;
+  height: 44px;
+}
+
+
+
+.navigate-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.navigate-button img {
+  width: 50px;
+  height: 50px;
+}
+
+.other-job-input{
+  align-items: center;
+  background-color: #f7f7f7;
+  border: 0.5px solid;
+  border-color: #aeaeb280;
+  border-radius: 7px;
+  justify-content: center;
+  padding: 4px 16px;
+  color: #000000;
+  font-family: "SUIT Variable-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  height: 25px;
+}
+.form-container2 h2{
+  color: rgba(35, 48, 57, 1);
+  font-family: "SUIT Variable-Medium", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top:41px;
+  margin-bottom: 0;
+  margin-left:50px;
+
+}
+.form-group2{
+  margin-bottom: 20px
+}
+.form-group2 h3, .form-group2 h5 {
+  margin: 0; 
+  text-align: left; 
+}
+
+.form-group2 h3 {
+  margin-bottom: 5px; 
+  margin-left:100px;
+  color: rgba(35, 48, 57, 1);
+  font-family: "SUIT Variable-Medium", Helvetica;
+  font-size: 16px;
+  font-weight: 500;
+}
+.form-group2 h5 { 
+  margin-top:-10px;
+  margin-bottom: 5px; 
+  margin-left:100px;
+  color: rgba(51, 51, 51, 1);
+  font-family: "SUIT Variable-Light", Helvetica;
+  font-size: 12px;
+  font-weight: 300;
+}
+.job-options, .purpose-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top:6px; /* 옵션 버튼과 텍스트 사이의 여백 추가 */
+  margin-left:170px;
+  width: fit-content; 
+  margin-bottom: 24px;
 
 }
 .option-button {
-  background: #f7f7f7;
+  background-color: #f7f7f7;
   border: 1px solid #ccc;
+  border-color: #aeaeb280;
   padding: 10px 20px;
-  margin: 6px;
+  margin: 4px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 30px;
   transition: background-color 0.3s ease;
+  height: 30px;
+  text-align: center;
+  line-height: atuo;
+  padding: 4px 16px;
 }
 
 .option-button.selected {
@@ -150,11 +288,11 @@ input.filled {
   border: 1px solid rgba(95, 218, 99, 1);
 }
 
-.job-options, .purpose-options {
+/* .job-options, .purpose-options {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-}
+} */
 
 
 .gender-button {

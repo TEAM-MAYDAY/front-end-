@@ -24,11 +24,11 @@ import { useNavigate } from 'react-router-dom';
                     <span className="header-link" onClick={handleClick2}>워케이션이란? </span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
-                    {/* {user ? ( 
+                    {user ? ( 
                         <span className="header-link">{user.name}님 환영합니다!</span>
-                    ) : (  */}
+                    ) : ( 
                         <span className="header-link" onClick={handleClick}>로그인　　　</span>
-                    {/* )} */}
+                   )} 
                 </nav>
             </div>
         </header>

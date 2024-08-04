@@ -47,8 +47,8 @@ const App = () => {
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />
-                <Route path="/login" element={ <><LoginForm setUser={setUser} /> <Footer2 /> </> } />
-                <Route path="/signup" element={<><SignupFormpage /> <Footer4 /> </>} />
+                <Route path="/login" element={ <><LoginForm setUser={setUser} /> <Footer4 /> </> } />
+                <Route path="/signup" element={<><SignupFormpage /> <Footer3 /> </>} />
             </Routes>
         </Router>
             // {/* <Header />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from 'react';
-import axios from 'axios';
+import axios, { formToJSON } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './SignupFormpage.css';
 
@@ -16,10 +16,11 @@ function SignupFormpage() {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-    const [job, setJob] = useState('nogender');
+    const [job, setJob] = useState('');
     const [gender, setGender] = useState('');
     const [purpose, setPurpose] = useState('');
     const [message, setMessage] = useState('');
+    const [otherJob, setOtherJob] = useState(''); // 기타 항목 상태
 
     const [isNextDisabled, setIsNextDisabled] = useState(true);
 
@@ -28,15 +29,17 @@ function SignupFormpage() {
     const jobOptions = [
         '개발', '경영·비즈니스', '마케팅·광고', '영업', '고객서비스',
         '미디어', '디자인', '엔지니어링·설계', 'HR', '금융', '교육', 
-        '게임 제작', '기타'
+        '게임 제작'
     ];
 
     const purposeOptions = [
         '다양한 업무 공간', '기분 전환', '생산성 향상', '문화 체험', 
         '팀 워크샵', '워크라이프밸런스'
     ];
+    const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState(false);
+    const [userId, setUserId] = useState('');
     const [areAllFieldsFilled, setAreAllFieldsFilled] = useState(false);
-
+ 
     useEffect(() => {
         if (id && password && passwordConfirm && gender !== 'nogender' && phone && email) {
             setAreAllFieldsFilled(true);
@@ -44,9 +47,19 @@ function SignupFormpage() {
             setAreAllFieldsFilled(false);
         }
     }, [id, password, passwordConfirm, gender, phone, email]);
+
     const handleJobChange = (job) => {
         setSelectedJob(job); // 직업 선택 상태 업데이트
+        setJob(job); // job 상태 업데이트
+        setOtherJob(''); // 기타 입력값 초기화
     };
+
+    const handleOtherJobChange = (e) => {
+        const value = e.target.value;
+        setOtherJob(value);
+        setJob(value); // job 상태 업데이트
+    };
+
 
     const handlePurposeChange = (purpose) => {
         setSelectedPurpose(prevState =>
@@ -55,6 +68,12 @@ function SignupFormpage() {
                 : [...prevState, purpose] // 선택 추가
         );
     };
+
+    useEffect(() => {
+        setPurpose(selectedPurpose.join(', ')); // purpose를 문자열로 업데이트
+        console.log(selectedPurpose.join(', ')); // purpose 상태 확인
+    }, [selectedPurpose]);
+
     // 비밀번호 확인 및 성별 선택 유효성 검사
   useEffect(() => {
     if (password !== passwordConfirm) {
@@ -84,24 +103,40 @@ function SignupFormpage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const requestData = {
+            id,               
+            password,
+            name,
+            phone,
+            email,
+            gender,
+            job,
+            purpose
+        };
+        console.log("Request Data:", requestData); // 요청 데이터 확인
         try {
-            const response = await axios.post('http://ec2-3-38-105-117.ap-northeast-2.compute.amazonaws.com:8080/api/v1/register', {
+            const response = await axios.post('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/register', {
                 id,               
                 password,
                 name,
-                phone,
                 email,
-                gender,
+                phone,
                 job,
+                gender,
                 purpose
             });
-            setMessage(response.data.message);
-            navigate('/login');
+            console.log( response.data);
+            console.log("Response Data:", response.data); // 응답 데이터 확인
+            setUserId(id); // 사용자 ID 설정
+            setIsRegistrationSuccessful(true); // 등록 성공 상태 업데이트
         } catch (error) {
             setMessage('Error registering user');
             console.log(error);
 
         }
+    };
+    const handleNavigateHome = () => {
+        navigate('/login');
     };
     const handlePhoneChange = (e) => {
         const value = e.target.value.replace(/\D/g, ''); // 숫자가 아닌 문자는 모두 제거
@@ -110,6 +145,7 @@ function SignupFormpage() {
             .replace(/^(\d{3})(\d{4})(\d{4})$/, '$1-$2-$3') // 010-1111-2222 형태로 포맷팅
             .replace(/(\d{3})(\d{4})/, '$1-$2'); // 입력 중에도 포맷팅 반영
         setPhone(formattedPhone);
+        console.log(formattedPhone);
     };
 
     const handleEmailChange = (e) => {
@@ -138,10 +174,24 @@ function SignupFormpage() {
 
     return (
        <div className='RealContainer'>
+        {true && (
+            <>
+            <div className="overlay"></div>
+            <div className="success-message">
+                <img src="imgs/Logo.png" alt="Success Icon" className="succes-bird" />
+                <h4>회원가입을 축하드립니다, {name} 님 <p />
+                    당신의 아이디는 {userId}입니다 </h4>
+                <h2>"50+ 개의 지자체 워케이션을 <p /> 카테고리별로 한눈에 확인해 보세요."</h2>
+                <button onClick={handleNavigateHome} className="navigate-button">
+                    <img src="imgs/nextstep_selected.png" alt="Navigate Home" />
+                </button>
+            </div>
+            </>
+        )}
         <div className="container">
             <div className="image-section">
-                <img src="imgs/Resgistration_flag.gif" alt="Image" />
-                <h2>회원가입</h2>
+            <img src={step === 1 ? 'imgs/Resgistration_flag.gif' : 'imgs/Registration_profile.gif'} alt="Image" />
+            <h2>회원가입</h2>
                 <h5>원하는 워케이션 정보를 클릭 한 번으로!<p />
                 더 이상 여러 사이트를 돌아다닐 필요가 없습니다.</h5>
             </div>
@@ -178,22 +228,22 @@ function SignupFormpage() {
                             <label>성별</label>
                             <div className="gender-buttons">
                                 <img
-                                    src={gender === 'male' ? 'imgs/Male_selected.png' : 'imgs/Male.png'} 
+                                    src={gender === 'MALE' ? 'imgs/Male_selected.png' : 'imgs/Male.png'} 
                                     alt="남성"
-                                    onClick={() => handleGenderChange('male')} 
+                                    onClick={() => handleGenderChange('MALE')} 
                                     className="gender-button"
                                 />
                                 <span>남성</span>
                                 <img
-                                    src={gender === 'female' ? 'imgs/Female_seleted.png' : 'imgs/Female.png'} 
+                                    src={gender === 'FEMALE' ? 'imgs/Female_seleted.png' : 'imgs/Female.png'} 
                                     alt="여성"
-                                    onClick={() => handleGenderChange('female')} 
+                                    onClick={() => handleGenderChange('FEMALE')} 
                                     className="gender-button"
                                 />
                                 <span>여성</span>
                                 <img
-                                    src={gender === 'nogender' ? 'imgs/nogender_selected.png' : 'imgs/nogender.png'} 
-                                    onClick={() => handleGenderChange('nogender')} 
+                                    src={gender === 'NOGENDER' ? 'imgs/nogender_selected.png' : 'imgs/nogender.png'} 
+                                    onClick={() => handleGenderChange('NOGENDER')} 
                                     className="gender-button2"
                                 />
                             </div>
@@ -215,47 +265,60 @@ function SignupFormpage() {
                         <p>{message}</p>
                     </form>
                 )}
-                 {step === 2 && (
-                    <form onSubmit={handleSubmit} className="form-container">
-                     <h2>회원정보</h2>
-                    <div className="form-group">
-                        <h3>직종: <p /></h3>
-                        <h3>"당신의 전문 분야는 무엇인가요?"</h3>
-                        <div className="job-options">
-                            {jobOptions.map((job) => (
-                                <button
-                                    type="button"
-                                    key={job}
-                                    className={`option-button ${selectedJob === job ? 'selected' : ''}`}
-                                    onClick={() => handleJobChange(job)}
-                                >
-                                    {job}
-                                </button>
-                            ))}
+               {step === 2 && (
+                    <form className="form-container2">
+                        <h2>추가 정보</h2>
+                        <div className="form-group2">
+                            <h3>직종: <p /></h3>
+                            <h5>"당신의 전문 분야는 무엇인가요?"</h5>
+                            <div className="job-options">
+                                {jobOptions.map((job) => (
+                                    <button
+                                        type="button"
+                                        key={job}
+                                        className={`option-button ${selectedJob === job ? 'selected' : ''}`}
+                                        onClick={() => handleJobChange(job)}
+                                    >
+                                        {job}
+                                    </button>
+                                ))}
+                                <input
+                                    type="text"
+                                    placeholder="기타"
+                                    value={otherJob}
+                                    className="other-job-input"
+                                    onFocus={() => setSelectedJob('')}
+                                    onChange={handleOtherJobChange}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group">
-                        <h3>워케이션을 떠나는 목적: <p /></h3>
-                        <h3>"“어떤 목표로 워케이션을 계획 중이신가요? 여러 항목을 선택해 보세요”"</h3>
-                        <div className="purpose-options">
-                            {purposeOptions.map((purpose) => (
-                                <button
-                                    type="button"
-                                    key={purpose}
-                                    className={`option-button ${selectedPurpose.includes(purpose) ? 'selected' : ''}`}
-                                    onClick={() => handlePurposeChange(purpose)}
-                                >
-                                    {purpose}
-                                </button>
-                            ))}
+                        <div className="form-group2">
+                            <h3>워케이션을 떠나는 목적: <p /></h3>
+                            <h5>“어떤 목표로 워케이션을 계획 중이신가요? 여러 항목을 선택해 보세요”</h5>
+                            <div className="purpose-options">
+                                {purposeOptions.map((purpose) => (
+                                    <button
+                                        type="button"
+                                        key={purpose}
+                                        className={`option-button ${selectedPurpose.includes(purpose) ? 'selected' : ''}`}
+                                        onClick={() => handlePurposeChange(purpose)}
+                                    >
+                                        {purpose}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
-                        <button type="submit">Sign Up</button>
+                        <img
+                            src="imgs/finalstep.png"
+                            alt="Final Step"
+                            className="finalstep"
+                            onClick={handleSubmit}
+                        />                    
                     </form>
                 )}
             </div>
         </div>
+        
     </div>
     );
 };
