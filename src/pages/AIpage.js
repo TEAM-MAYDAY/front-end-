@@ -94,10 +94,10 @@ const AIpage = () => {
                     }
               // user 객체에서 job, interest, purpose 추출
         // user 객체에서 job, interest, purpose 추출
-        const job = user.job; // 변수명 수정
-        const interest = user.interest; // 변수명 수정
-        const purpose = user.purpose; // 변수명 수정
-        
+        const job = user.job; 
+        // const interest = user.interest; 
+        const purpose = user.purpose; 
+        const gender = user.gender;
           const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
           {
             description: description,
@@ -105,12 +105,12 @@ const AIpage = () => {
             answer2: inputValue2,
             answer3: inputValue3,
             job: job,
-            interest: interest,
+            // interest: interest,
             purpose: purpose
           });
           console.log(response.data);
           // navigate('/aianswer', { state: { data: response.data } });
-          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, interest, purpose } } });
+          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
         } catch (err) {
           setError('데이터 가져오기 오류: ' + err.message);
       } finally {

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Footer2 from './components/Footer2';
 import Footer3 from './components/Footer3';
+import Footer4 from './components/Footer4';
 
 import './App.css';  
 import AIpage from './pages/AIpage';
@@ -47,7 +48,7 @@ const App = () => {
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />
                 <Route path="/login" element={ <><LoginForm setUser={setUser} /> <Footer2 /> </> } />
-                <Route path="/signup" element={<><SignupFormpage /> <Footer2 /> </>} />
+                <Route path="/signup" element={<><SignupFormpage /> <Footer4 /> </>} />
             </Routes>
         </Router>
             // {/* <Header />

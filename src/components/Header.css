@@ -3,6 +3,7 @@
 .header {
     top: 0;
     left:0;
+    padding:0;
     position: fixed;
     /* transform: translateX(-50%); */
     text-align: center;

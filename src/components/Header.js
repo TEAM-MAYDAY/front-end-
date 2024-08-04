@@ -18,17 +18,17 @@ import { useNavigate } from 'react-router-dom';
         <header className="header">
             <div className="header-content">
                 <div className="logo-and-text">
-                    <img src="/imgs/logo.png" alt="Logo" className="logo" />
+                    <img src="/imgs/Mainlogo.png" alt="Logo" className="logo" />
                 </div>
                 <nav className="header-links">
                     <span className="header-link" onClick={handleClick2}>워케이션이란? </span>
                     <span className="header-link">워케이션 비교</span>
                     <span className="header-link">커뮤니티</span>
-                    {user ? ( // user 존재 -> 환영 메시지 표시
+                    {/* {user ? ( 
                         <span className="header-link">{user.name}님 환영합니다!</span>
-                    ) : ( // user 존재 x ->로그인 버튼 표시
+                    ) : (  */}
                         <span className="header-link" onClick={handleClick}>로그인　　　</span>
-                    )}
+                    {/* )} */}
                 </nav>
             </div>
         </header>

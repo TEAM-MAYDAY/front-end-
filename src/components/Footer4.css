@@ -1,0 +1,34 @@
+div .footer4 {
+    width:auto;
+    text-align: center;
+    /* position: fixed; */
+    position: relative; 
+    height: 251px;
+    margin-top:0px;
+    transition: transform 0.5s ease;
+    background-color: #f8f8f8;
+  
+  }
+  .arrow3{
+    width: 40px;
+    height: 40px;
+    z-index:2;
+    transition: transform 0.7s ease  opacity 0.5s ;
+    position: relative;
+    top:150px;
+    left:384px;
+  }
+  
+  .arrow:hover{
+  cursor: pointer;
+  transform: scale(1.2,0.192);
+  opacity: 0.9;
+  }
+  
+  .copyright {
+    height: 251px;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:1;
+  }
