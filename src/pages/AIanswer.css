@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Mayday-SUIT';
+    src: url('../../public/fonts/SUIT-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body, html {
     margin: 0;
@@ -17,7 +23,7 @@ body, html {
     align-items: center; /* 섹션들을 수직 중앙 정렬 */
   }
   .question-section {
-    font-family: Arial, sans-serif;
+    font-family: 'Mayday-SUIT', sans-serif;
     height: auto;
     width:912px;
     box-sizing: border-box; 
@@ -49,6 +55,7 @@ body, html {
     background-color: #34c759;
     color: white;
     font-weight: bold;
+    font-family: 'Mayday-SUIT', sans-serif;
     border-radius: 16px;
     width: 45px;
     height: 32px;
@@ -62,6 +69,7 @@ body, html {
   .question-text {
     color: #333333;
     font-size: 14px;
+    font-family: 'Mayday-SUIT', sans-serif;
     line-height: 1.6;
     max-width: 800px;
   
@@ -69,6 +77,7 @@ body, html {
   
   .input-guide {
     font-size: 12px;
+    font-family: 'Mayday-SUIT', sans-serif;
     color: #333333;
     margin-bottom: 5px;
     margin-left: 40px;
