@@ -10,17 +10,21 @@ body {
     font-family: 'Mayday-SUIT', sans-serif;
     height: auto;
 }
+.main{
+  width: auto;
+  margin: 0 auto;
+}
 
-.container {
+.Detailed-container {
 display: grid;
 grid-template-areas: 
    "gallery"
     "main";
   grid-template-rows: auto 1fr auto;
   gap: 0;
-  margin-top:50px;
+  margin-top:100px;
 }
-.gallery {
+.Detailed-gallery {
   /* grid-area: gallery; */
   /* background-color: black; */
   position: relative;
@@ -36,15 +40,15 @@ grid-template-areas:
   margin: 10px auto 150px 40px;
 }
 
-.gallery img {
-  width: 90%; 
+.Detailed-gallery img {
+  width: 100%; 
   height: 120%;
   /* width: 45%;
   height: 50%; */
   transition: transform 0.2s, width 0.2s, height 0.2s, box-shadow 0.5s, opacity 0.5s;
   object-fit: cover;
 }
-.gallery img:hover {
+.Detailed-gallery img:hover {
   transform: scale(1.05,1.05);
   z-index: 1;
   box-shadow: 0px 4px 10px #00000040, 0px -4px 10px #00000040;
@@ -54,54 +58,35 @@ grid-template-areas:
 .large-image {
   grid-column: span 2; 
   grid-row: span 2;  
+  width:1440px;
   border-radius: 40px 40px;   
   margin: 0 auto;
   margin-top: 10px;
   height: auto;
 }
 
-/* .normal-image {
-grid-column: span 1; 
-grid-row: span 1;    
-}
-
-.TopRightRound-image {
-grid-column: span 1; 
-grid-row: span 1; 
-border-radius: 0 40px 0 0;   
- 
-}
-
-.BottomRightRound-image {
-grid-column: span 1; 
-grid-row: span 1;  
-border-radius: 0 0 40px 0;   
-
-} */
-
 
 .main {
   grid-area: main;
   display: flex;
   gap: 10px;
-  margin: auto auto;
+  margin: 0 auto;
+  width: 1440px;
 }
 
-.main .content {
+.main .Detailed-content {
   padding: 10px;
-  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 1000px;
-  width: 800px;
   background-color: #ffffff4c;
   border-radius: 20px;
   box-shadow: 0px 4px 10px #00000040, 0px -4px 10px #00000040;
-  margin-left:160px;
+  width:980px;
+  height: 1300px;
 }
 
-.content section {
+.Detailed-content section {
   background-color: white;
   color: black;
   padding:  0 0 0 10px;
@@ -168,23 +153,24 @@ text-align: center;
 .content-detail{
 margin-left:40px;
 }
-.sidebar-container {
+.Detailed-sidebar-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
   width: 250px;
   height: auto;
+
 }
 .alarm-section{
   position: relative;
   padding: 0;
   padding-top: 0;
-  margin-top:0;
+  margin-top:-220px;
 }
 .alarm-section .alarm {
   color: rgb(255, 255, 255);
-  top:0;
+  top:0px;
   padding: 5px;
   text-align: center;
   display: flex; 
@@ -197,12 +183,14 @@ margin-left:40px;
   /* background-color: var(--ios-colors-colors-green); */
   border-radius: 30px;
   box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
-  width: 220px;
-  height: 60px;
+  width: 400px;
+  height: 100px;
   font-size: 20px;
   font-family: 'Mayday-SUIT', sans-serif;
   transition: transform 0.5s, width 0.5s, height 0.5s, box-shadow 0.5s, opacity 0.5s;
   border: 0 solid ;
+  color: #ffffff;
+  font-weight: 700;
 }
 .alarm-section .alarm:hover{
   z-index: 1;
@@ -212,52 +200,75 @@ margin-left:40px;
 
 }
 .alarm-message{
+  font-size: 20px;
   position: absolute;
-  top: -380px;
-  left:50px;
-  font-size: 12px;  
+  top: -330px;
+  left:80px;
+  /* font-size: 12px;   */
   color:   #21aa12;
   font-family: 'Mayday-SUIT', sans-serif;
 }
 .alarm-sub-message{
   position: absolute;
-  top:-340px;
-  left:60px;
-  font-size: 10px;
+  top:-260px;
+  left:90px;
+  font-size: 19px;
   color: #8e8e93;
   font-family: 'Mayday-SUIT', sans-serif;
 }
 .alarm-sub-message2{
   position: absolute;
-  top:-340px;
-  left:85px;
-  font-size: 10px;
+  top:-260px;
+  left:135px;
+  font-size: 19px;
   font-family: 'Mayday-SUIT', sans-serif;
+  margin-bottom: 200px;
 }
-.sidebar-box .sidebar {
+.Detailed-sidebar-box .Detailed-sidebar {
   /* background-color: red; */
   /* color: white; */
-  top:-360px;
+  top:-310px;
   position: absolute;
   padding: 10px;
   text-align: center;
-  flex: 1;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
   margin-left:30px;
-  width: 220px;
-  height: 480px;
+  width: 380px;
+  height: 800px;
+  margin-top:52px;
 }
-.sidebar-message{
-  top:-400px;
-
+.Detailed-sidebar-message{
+  top:-300px;
   position: absolute;
-  bottom: 10px;
   left: 40px;
+  font-size: 19px;
 }
 
-.sidebar-box{
+.Detailed-sidebar-box{
   position: relative;
   margin-top: 90px;
+}
+.Detailed{
+  margin-top:24px;
+}
+.Detailed:hover{
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+.Detailed h1{
+  color: rgba(51, 51, 51, 1);
+  font-family: "SUIT Variable-Light", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+}
+.Detailed .Detailed-sideImg {
+  width:auto;
+  height: 80px;
+}
+/* 충남 혼자 width 크길래 따로 지정 */
+.Detailed .Detailed-sideImg2 { 
+  width:80%;
+  height: auto;
 }
