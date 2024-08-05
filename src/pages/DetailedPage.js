@@ -48,8 +48,15 @@ const DetailedPage = () => {
     ].filter(Boolean); // truthy 값만 필터링
     console.log('Tags:', tags); // Tags 로그 출력
 
-    
+      // 추가된 속성들을 처리하기 위한 details 배열 생성
+  const details = [
+    { label: '전화번호', value: locationData.phoneNumber }, // 전화번호 추가
+    { label: '운영 시간', value: locationData.operatingTime }, // 운영 시간 추가
+    { label: '소개', value: locationData.locationIntroduction }, // 소개 추가
+    { label: '제공 혜택', value: locationData.providedDetails } // 제공 혜택 추가
+  ];
   const navigate = useNavigate(); //ai입력페이지로 이동
+
     const handleNavigation = (url) => {
       window.open(url, '_blank');
     };
@@ -80,22 +87,12 @@ const DetailedPage = () => {
           ))} */}
         </section>
         <section className="content-detail">
-          <div className="share-office">
-            <h2>공유 오피스</h2>
-            <h5>본문(숙소 설명 및)</h5>
-          </div>
-          <div className="share-office">
-            <h2>숙소</h2>
-            <h5>본문(숙소 설명 및)</h5>
-          </div>
-          <div className="share-office">
-            <h2>제공 혜택</h2>
-            <h5>본문(숙소 설명 및)</h5>
-          </div>
-          <div className="share-office">
-            <h2>기타 사항</h2>
-            <h5>본문(숙소 설명 및)</h5>
-          </div>
+        {details.map((detail, index) => (
+              <div key={index} className="share-office">
+                <h2>{detail.label}</h2> {/* label 추가 */}
+                <h5>{detail.value}</h5> {/* value 추가 */}
+              </div>
+            ))}
         </section>
       </div>
         <div className="Detailed-sidebar-container">
