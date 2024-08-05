@@ -33,8 +33,8 @@ const Home = () => {
 
       if (scrollY < height) {
         setStage(0);
-      } else if (scrollY >= height && scrollY < 2 * height) {
-        setStage(1);
+      // } else if (scrollY >= height && scrollY < 2 * height) {
+      //   setStage(1);
       } else if (scrollY + window.innerHeight >= totalHeight) {
         setStage(2);
       }
@@ -76,9 +76,9 @@ const Home = () => {
       <animated.div style={landingProps} className="section">
         <Landing />
       </animated.div>
-      <animated.div style={lightBulbProps} className="section">
+      {/* <animated.div style={lightBulbProps} className="section">
         <LightBulb />
-      </animated.div>
+      </animated.div> */}
       {stage === 2 && (
         <div className="SupportPoliciesContainer">
           <animated.div style={supportPoliciesProps} className="section2 grid-container">

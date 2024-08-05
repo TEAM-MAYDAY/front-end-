@@ -70,7 +70,7 @@
         bottom: 93px;
         left: auto;
     }
-.container .form-section {
+.container .signupform-section {
   margin: 0 auto;
   padding: 0 auto;
   width: 548px;
@@ -82,7 +82,7 @@
 
 }
 
-.form-container {
+.signupform-container {
   /* display: flex; */
   /* flex-direction: column; */
   width:100%;
@@ -90,12 +90,15 @@
   padding-right:88px;
 }
 
-.form-container h2 {
-  margin-bottom: 20px;
+.signupform-container2 h2 {
+  margin-bottom: 30px;
   margin-left:47px ;
+  font-family: "SUIT Variable-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
 }
 
-.form-group {
+.signupform-group {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -112,7 +115,7 @@ input.filled {
   width:400px;
 }
 
-.form-group label {
+.signupform-group .signupFormLabel {
     flex: 1;
     font-family: 'Mayday-SUIT', Helvetica;
     font-size: 16px;
@@ -229,25 +232,25 @@ input.filled {
   text-align: center;
   height: 25px;
 }
-.form-container2 h2{
+.signupform-container h2{
   color: rgba(35, 48, 57, 1);
   font-family: 'Mayday-SUIT', Helvetica;
   font-size: 20px;
   font-weight: 700;
   margin-top:41px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   margin-left:50px;
 
 }
-.form-group2{
+.signupform-group2{
   margin-bottom: 20px
 }
-.form-group2 h3, .form-group2 h5 {
+.signupform-group2 h3, .signupform-group2 h5 {
   margin: 0; 
   text-align: left; 
 }
 
-.form-group2 h3 {
+.signupform-group2 h3 {
   margin-bottom: 5px; 
   margin-left:100px;
   color: rgba(35, 48, 57, 1);
@@ -255,7 +258,7 @@ input.filled {
   font-size: 16px;
   font-weight: 500;
 }
-.form-group2 h5 { 
+.signupform-group2 h5 { 
   margin-top:-10px;
   margin-bottom: 5px; 
   margin-left:100px;
@@ -317,7 +320,7 @@ input.filled {
   margin-top:-20px;
 
 }
-.form-group input {
+.signupform-group input {
   background-color: #f7f7f7;
   margin-left:12px;
   padding: 5px;
@@ -328,14 +331,14 @@ input.filled {
   margin-bottom: 24px;
   color:rgba(102, 102, 102, 0.6);
 }
-.form-group input:focus {
+.signupform-group input:focus {
   border: 2px solid rgba(95, 218, 99, 1);
   border-radius: 4px;
 
 }
 
 
-.form-container p {
+.signupform-container p {
   color: red;
   margin-top: -30px;
   margin-left:210px;

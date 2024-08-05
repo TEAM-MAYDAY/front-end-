@@ -29,6 +29,7 @@ const App = () => {
     //     // user 상태가 변경될 때마다 로컬 스토리지에 저장
     //     localStorage.setItem('user', JSON.stringify(user));
     //   }, [user]);
+
     const [user, setUser] = useState(null);
 
     useEffect(() => {

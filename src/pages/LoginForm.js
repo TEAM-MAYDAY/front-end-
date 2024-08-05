@@ -7,7 +7,8 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-    
+    const [loginFailed, setLoginFailed] = useState(false);
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -28,13 +29,16 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
                 // 서버와의 연결 실패 (네트워크 오류)
                 setMessage('서버와 연결할 수 없습니다. 네트워크 상태를 확인하세요.');
                 console.error('서버와 연결할 수 없습니다.', error);
-            } else if (error.response.status >= 500) {
-                // 서버 오류
-                setMessage('잠시 후 다시 시도하세요.');
-                console.error('서버 오류', error.response.status);
-            } else {
+            // } else if (error.response.status >= 500) {
+            //     // 서버 오류
+            //     setMessage('잠시 후 다시 시도하세요.');
+            //     console.error('서버 오류', error.response.status);
+            // } else {
+            }
+            else{
                 // 기타 오류 (로그인 실패 등)
-                setMessage('로그인 실패. 아이디와 비밀번호를 확인하세요.');
+                setMessage('올바른 비밀번호를 입력하세요.');
+                setLoginFailed(true); // 로그인 실패 시 상태 업데이트               
                 console.error('로그인 실패', error.response.status);
             }
         }
@@ -69,7 +73,7 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
                     <span>워케이션 포털</span>
                     <span className='highlight'> 메이데이</span>
                     <span>에 오신 걸 환영합니다.</span>
-                    <div className="form-group">
+                    <div className="Loginform-group">
                         <label className="IDpart">ID</label>
                         <input
                             type="text"
@@ -78,8 +82,8 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
                             placeholder="입력란"
                         />
                     </div>
-                    <div className="form-group">
-                        <label>비밀번호　<h1>{message}</h1></label> 
+                    <div className={`Loginform-group ${loginFailed ? 'error' : ''}`}>
+                    <label className='PWpart'>비밀번호<h1>　{message}</h1></label> 
                         <input
                             type="password"
                             value={password}
@@ -88,7 +92,7 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
                             placeholder="입력란"
                         />
                     </div>
-                    <button type="submit" className="login-button">로그인</button>
+                    <button type="submit" className="login-button" onClick={handleSubmit}>로그인</button>
                     <p>계정이 없나요? <button type="button" className="signup-link" onClick={handleSignupClick}>회원가입</button></p>
 
                 </form>

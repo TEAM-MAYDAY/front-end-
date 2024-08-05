@@ -37,7 +37,7 @@ function SignupFormpage() {
         '팀 워크샵', '워크라이프밸런스'
     ];
     const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState(false);
-    const [userId, setUserId] = useState('');
+    const [user, setUser] = useState('');
     const [areAllFieldsFilled, setAreAllFieldsFilled] = useState(false);
  
     useEffect(() => {
@@ -127,7 +127,9 @@ function SignupFormpage() {
             });
             console.log( response.data);
             console.log("Response Data:", response.data); // 응답 데이터 확인
-            setUserId(id); // 사용자 ID 설정
+            setUser(response.data);
+            // setUserId(id); // 사용자 ID 설정
+                    // 사용자 정보 설정
             setIsRegistrationSuccessful(true); // 등록 성공 상태 업데이트
         } catch (error) {
             setMessage('Error registering user');
@@ -180,8 +182,8 @@ function SignupFormpage() {
             <div className="overlay"></div>
             <div className="success-message">
                 <img src="imgs/Logo.png" alt="Success Icon" className="succes-bird" />
-                <h4>회원가입을 축하드립니다, {name} 님 <p />
-                    당신의 아이디는 {userId}입니다 </h4>
+                <h4>회원가입을 축하드립니다, {user.name} 님 <p />
+                    당신의 아이디는 {user.id}입니다 </h4>
                 <h2>"50+ 개의 지자체 워케이션을 <p /> 카테고리별로 한눈에 확인해 보세요."</h2>
                 <button onClick={handleNavigateHome} className="navigate-button">
                     <img src="imgs/nextstep_selected.png" alt="Navigate Home" />
@@ -196,37 +198,37 @@ function SignupFormpage() {
                 <h5>원하는 워케이션 정보를 클릭 한 번으로!<p />
                 더 이상 여러 사이트를 돌아다닐 필요가 없습니다.</h5>
             </div>
-            <div className="form-section">
+            <div className="signupform-section">
                 {step === 1 && (
-                    <form className="form-container">
+                    <form className="signupform-container">
                         <h2>회원정보</h2>
-                        <div className="form-group">
-                            <label>ID</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">ID</label>
                             <input type="text" value={id} onChange={(e) => setId(e.target.value)} placeholder="입력란" className={id ? 'filled' : ''} />
                         </div>
-                        <div className="form-group">
-                            <label>비밀번호</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">비밀번호</label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="입력란" className={password ? 'filled' : ''} />
                         </div>
-                        <div className="form-group">
-                            <label>비밀번호 확인</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">비밀번호 확인</label>
                             <input type="password" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} placeholder="입력란" className={passwordConfirm ? 'filled' : ''} />
                         </div>
                         <div className="divider"></div>
-                        <div className="form-group">
-                            <label>성명</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">성명</label>
                             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="입력란" className={name ? 'filled' : ''} />
                         </div>
-                        <div className="form-group">
-                            <label>전화번호</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">전화번호</label>
                             <input type="text" value={phone} onChange={handlePhoneChange} placeholder="입력란" className={phone ? 'filled' : ''} />
                         </div>
-                        <div className="form-group">
-                            <label>이메일</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">이메일</label>
                             <input type="text" value={email} onChange={handleEmailChange} placeholder="입력란" className={email ? 'filled' : ''} />
                         </div>
-                        <div className="form-group">
-                            <label>성별</label>
+                        <div className="signupform-group">
+                            <label className="signupFormLabel">성별</label>
                             <div className="gender-buttons">
                                 <img
                                     src={gender === 'MALE' ? 'imgs/Male_selected.png' : 'imgs/Male.png'} 
@@ -267,9 +269,9 @@ function SignupFormpage() {
                     </form>
                 )}
                {step === 2 && (
-                    <form className="form-container2">
+                    <form className="signupform-container2">
                         <h2>추가 정보</h2>
-                        <div className="form-group2">
+                        <div className="signupform-group2">
                             <h3>직종: <p /></h3>
                             <h5>"당신의 전문 분야는 무엇인가요?"</h5>
                             <div className="job-options">
@@ -293,7 +295,7 @@ function SignupFormpage() {
                                 />
                             </div>
                         </div>
-                        <div className="form-group2">
+                        <div className="signupform-group2">
                             <h3>워케이션을 떠나는 목적: <p /></h3>
                             <h5>“어떤 목표로 워케이션을 계획 중이신가요? 여러 항목을 선택해 보세요”</h5>
                             <div className="purpose-options">

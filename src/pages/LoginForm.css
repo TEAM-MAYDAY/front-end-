@@ -58,26 +58,28 @@ body {
 .loginform {
   width: 100%;
   width: 548px;
-
   width: 400px;
+  align-items: stretch;
 
 
 }
 
 .loginform span {
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: -5px;
   font-size: 12px;
   color: #333;
   font-family: "SUIT Variable-Regular", Helvetica;
   padding-right:auto;
-  line-height: -40px;
-
+  line-height: -0px;
+  bottom: -20px;
+  line-height: 1.2; 
 }
 .loginform .highlight{
   font-weight: 700;
   font-size: 12px;
   padding-right:0;
+  line-height: 1.2; 
 
 }
 
@@ -86,43 +88,64 @@ body {
   color: #777;
 }
 
-.form-group {
+.Loginform-group {
   margin-top:20px;
   display: flex;
   flex-direction: column;
+  position: relative;
+
 }
-.form-group .IDpart{
-  margin-bottom: 5px;
-  color: #333;
-  margin-left:-320px;
-  display: flex;
-}
-.form-group label {
+
+.Loginform-group .PWpart {
   display: block;
   margin-bottom: 5px;
   color: #333;
-  margin-left:-160px;
+  left: 90px;
   display: flex;
+  margin-left:-90px;
+  position: relative;
+  text-align: left;
 }
-
-.form-group input {
+.Loginform-group .IDpart{
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  left: 80px;
+  display: flex;
+  left:0px;
+  position: relative;
+  text-align: left;
+}
+.Loginform-group input {
+  display: block;
   width: 50%;
   padding: 10px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-left:-150px;
+  position: relative;
+  left:0px;
+  height: 31px;
+
 }
-.form-group h1{
+
+.Loginform-group h1{
   color: #ff000099;
   font-family: "SUIT Variable-Regular", Helvetica;
   font-size: 10px;
   font-weight: 400;
+  text-align: right;
+  margin-right:-200px;
+  line-height: -20px;
+}
+.Loginform-group.error input {
+  border: 1px solid #e99e9c
+  ;
 }
 .login-button {
   border: none;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   background-color: rgba(181, 238, 183, 1);
@@ -135,8 +158,9 @@ body {
   color: #000000;
   font-family: "SUIT Variable-Regular", Helvetic;
   line-height: 12.6px;
-  margin-left:140px;
-
+  margin-left:70px;
+  margin-top:32px;
+  margin-bottom: 32px;
 }
 
 .login-button:hover {
@@ -146,11 +170,13 @@ body {
 .signup-link {
   background: none;
   border: none;
-  color: #78C2AD;
+  color:  #439b46;
   cursor: pointer;
   text-decoration: underline;
   font-size: 16px;
   padding: 0;
+  font-family: "SUIT Variable-Bold", Helvetica;
+  font-weight: 700;
 }
 
 .signup-link:hover {
