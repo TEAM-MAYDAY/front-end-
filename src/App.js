@@ -43,15 +43,13 @@ const App = () => {
         <Router>
             <Header user={user} /> {/* Header에 user prop 전달 */}
             <Routes>
-                {/* <Route path="/" element={<><Home /></>} /> 
+                <Route path="/" element={<><Home /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />
                 <Route path="/login" element={ <><LoginForm setUser={setUser} /> <Footer4 /> </> } />
-                <Route path="/signup" element={<><SignupFormpage /> <Footer3 /> </>} /> */}
-                <Route path="/" element={<> <DetailedPage /><Footer2 /> </>} />
-
+                <Route path="/signup" element={<><SignupFormpage /> <Footer3 /> </>} />
             </Routes>
         </Router>
             // {/* <Header />

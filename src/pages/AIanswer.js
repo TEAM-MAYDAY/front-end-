@@ -56,18 +56,18 @@ const backpage = () => {
 }
 
     return (
-        <div className="container">
+        <div className="AIanswercontainer">
         <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
-        <main className="main">
-          <div className="left-sidebar-container">
-            <img alt="illust" src="imgs/ilust.png" className="illust2"/>
-            <button className="back-btn" onClick={backpage}>&lt;-돌아가기</button>
-          </div>
-            <div className="content">
-              <div className="qeustion-section">
-                <div className="question-box">
-                  <div className="question-num">1</div>
-                  <div className="question-text">
+        <main className="AIanswermain">
+            <div className="AIanswerleft-sidebar-container">
+              <img alt="illust" src="imgs/ilust.png" className="illust2"/>
+              <button className="back-btn" onClick={backpage}>&lt;-돌아가기</button>
+            </div>
+            <div className="AIanswercontent">
+              <div className="AIanswerqeustion-section">
+                <div className="AIanswerquestion-box">
+                  <div className="AIanswercontentquestion-num">1</div>
+                  <div className="AIanswercontentquestion-text">
                     지원동기
                   </div>
                 </div>
@@ -83,10 +83,11 @@ const backpage = () => {
                     rows="5" // 초기 행 높이 설정
                   />
               </div>
-              <div className="qeustion-section">
-                <div className="question-box">
-                  <div className="question-num">2</div>
-                  <div className="question-text">
+              </div>
+              <div className="AIanswerqeustion-section">
+                <div className="AIanswerquestion-box">
+                  <div className="AIanswercontentquestion-num">2</div>
+                  <div className="AIanswercontentquestion-text">
                     여행계획
                   </div>
                 </div>
@@ -101,10 +102,11 @@ const backpage = () => {
                     rows="5" // 초기 행 높이 설정
                   />
               </div>
-              <div className="qeustion-section">
-                <div className="question-box">
-                  <div className="question-num">3</div>
-                  <div className="question-text">
+              </div>
+              <div className="AIanswerqeustion-section">
+                <div className="AIanswerquestion-box">
+                  <div className="AIanswercontentquestion-num">3</div>
+                  <div className="AIanswercontentquestion-text">
                     홍보계획
                   </div>
                 </div>
@@ -121,15 +123,17 @@ const backpage = () => {
               </div>
             </div>
             </div>
+            <div className="AIanswercontentright-sidebar-container">
+              {/* <div className="section2"></div> */}
+              <div className='AIanswercontentsection1'></div>
             </div>
-            </div>
-            <div className="right-sidebar-container">
-            <div className="section1"></div>
-            {/* <div className="section2"></div> */}
-          </div>
-        </main>
 
-          </div>
+
+          </main>
+
+      </div>
+
+     
     );
 };
 

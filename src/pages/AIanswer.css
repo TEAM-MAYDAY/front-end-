@@ -12,24 +12,31 @@ body, html {
     width: 100%;
     height: 100%;
   }
-  .container{
+  .AIanswercontainer{
     width:1920px;
   }
-  .main{
-    width:1920px;
-    /* margin: 0 200px; */
+  .AIanswermain{
+
     display: flex;
+    margin:0 auto;
     /* justify-content: space-between;  */
     align-items: center; /* 섹션들을 수직 중앙 정렬 */
+    margin: 0 auto;
+    /* background-color: blue; */
+    width:100%;
+    padding: 0 auto;
   }
-  .question-section {
+  .AIanswerqeustion-section{
     font-family: 'Mayday-SUIT', sans-serif;
     height: auto;
     width:912px;
     box-sizing: border-box; 
     padding-right: 0;
   }
-  .container .content{
+  .AIanswercontent{
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
     display: flex;
     position: relative;
     box-sizing: border-box; 
@@ -38,8 +45,12 @@ body, html {
     padding-top: 65px;
     padding-left: 24px;
     padding-right: 24px;
+    flex-direction: column;
+    margin:0 auto;
+    margin-left:0;
+    /* background-color: red; */
   }
-  .question-box {
+  .AIanswerquestion-box {
     display: flex;
     align-items: flex-start;
     background-color: #34c7591a;
@@ -51,7 +62,7 @@ body, html {
     margin-top:10px;
   }
   
-  .question-num {
+  .AIanswercontentquestion-num {
     background-color: #34c759;
     color: white;
     font-weight: bold;
@@ -66,7 +77,7 @@ body, html {
     
   }
   
-  .question-text {
+  .AIanswercontentquestion-text {
     color: #333333;
     font-size: 14px;
     font-family: 'Mayday-SUIT', sans-serif;
@@ -118,17 +129,19 @@ body, html {
     border: none;
   
   }
-  .left-sidebar-container{
+  .AIanswerleft-sidebar-container{
     position: relative;
+    margin-left:100px;
+    margin-right:40px;
     width: 120px;
+    margin-top:0;
     display: flex;
     margin-top:0;
     height: 1000px;
     /* background-color: red; */
-    margin-left:100px;
-    margin-right:-130px;
+    /* margin-left:100px; */
   }
-  .section1{
+  .AIanswercontentsection1{
     width:240px;
     height: 400px;
     background-color: #ffffff;
@@ -136,7 +149,8 @@ body, html {
     box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
     position: absolute;
     top:0;
-    margin-left: 0; 
+    margin-left: 20px; 
+    left:0;
  }
   .section2{  
     /* width:240px;
@@ -147,19 +161,18 @@ body, html {
     position: relative;
     top:120px; */
   }
-  .right-sidebar-container{
-    display: flex;
+  .AIanswercontentright-sidebar-container{
     position: relative;
     /* background-color: red; */
-    width:200px;
+    width:160px;
     height: 1000px;
-    margin-left:40px;
-  }
+    left:-535px;
+    }
   .illust2{
     position: absolute;
     width: 120px;
     height: 120px;
-    margin-top:120px;
+    margin-top: 0px;
   }
   .back-btn{
     width: 160px;
@@ -169,7 +182,7 @@ body, html {
     border-radius: 20px;
     border:none;
     box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
-    margin-top:10px;
+    margin-top:-120px;
     margin-left: 0; 
     padding: 21px 24px;
     transition: transform 0.2s;

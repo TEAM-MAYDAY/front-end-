@@ -99,15 +99,16 @@ const SupportPolicies = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/all');
-          if (response.status !== 200) {
-            console.log("HTTP오류");
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
+          // if (response.status !== 200) {
+          //   console.log("HTTP오류");
+          //   throw new Error(`HTTP error! status: ${response.status}`);
+          // }
           const items = response.data.items;
-          if (!items || items.length === 0) {
-            console.log("데이터 X");
-            throw new Error('데이터가 없습니다.');
-          }
+          // if (!items || items.length === 0) {
+          //   console.log("데이터 X");
+          //   throw new Error('데이터가 없습니다.');
+          console.log(items);
+          // }
           setLocations(items);
           setFilteredLocations(items); // 처음에는 모든 데이터를 표시
         } catch (err) {

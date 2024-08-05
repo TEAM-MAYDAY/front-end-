@@ -12,24 +12,24 @@ body, html {
   width: 100%;
   height: 100%;
 }
-.container{
+.AIpagecontainer{
   width:1920px;
 }
-.main{
+.AIpagemain{
   width:1920px;
   /* margin: 0 200px; */
   display: flex;
   /* justify-content: space-between;  */
   align-items: center; /* 섹션들을 수직 중앙 정렬 */
 }
-.question-section {
+.AIpagequestion-section{
   font-family: 'Mayday-SUIT', sans-serif;
   height: auto;
   width:912px;
   box-sizing: border-box; 
   padding-right: 0;
 }
-.container .content{
+.AIpagecontent{
   display: flex;
   position: relative;
   box-sizing: border-box; 
@@ -38,8 +38,10 @@ body, html {
   padding-top: 65px;
   padding-left: 24px;
   padding-right: 24px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
 }
-.question-box {
+.AIpagequestion-box {
   display: flex;
   align-items: flex-start;
   background-color: #34c7591a;
@@ -51,7 +53,7 @@ body, html {
   margin-top:10px;
 }
 
-.question-num {
+.AIpagequestion-num {
   background-color: #34c759;
   color: white;
   font-weight: bold;
@@ -66,7 +68,7 @@ body, html {
   
 }
 
-.question-text {
+.AIpagequestion-text {
   color: #333333;
   font-size: 14px;
   font-family: 'Mayday-SUIT', sans-serif;
@@ -118,17 +120,17 @@ body, html {
   border: none;
 
 }
-.left-sidebar-container{
+.AIpageleft-sidebar-container{
   position: relative;
   width: 120px;
   display: flex;
-  margin-top:0;
+  margin-top:-260px;
   height: 1000px;
   /* background-color: red; */
   margin-left:100px;
-  margin-right:-130px;
+  margin-right:30px;
 }
-.section1{
+.AIpagesection1{
   width:240px;
   height: 400px;
   background-color: #ffffff;
@@ -146,7 +148,7 @@ body, html {
   position: relative;
   top:120px; */
 }
-.right-sidebar-container{
+.AIpageright-sidebar-container{
   display: flex;
   position: relative;
   /* background-color: red; */
@@ -161,7 +163,7 @@ body, html {
   
 }
 
-.btn{
+.AIpagebtn{
   /* width:200px;
   height: 100px;
   background-color: red;
@@ -184,12 +186,12 @@ body, html {
   border: none;
   font-size: 20px;
   font-family: 'Mayday-SUIT', sans-serif;
-  top:900px;
+  top:1200px;
   left: 412.3px;
   font-weight: 700;
   transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.btn:hover{
+.AIpagebtn:hover{
   cursor: pointer;
   transform: scale(1.12,1.12);
   background-color: rgba(52, 199, 89, 0.85);
@@ -223,7 +225,11 @@ body, html {
   animation: spin 2s linear infinite;
   margin: 20px auto; /* 가운데 정렬 */
 }
-
+.AIpageErrorMessage{
+  position: absolute;
+  bottom: 0;
+  left:0;
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -236,7 +242,7 @@ body, html {
   grid-template-rows: 780px 1fr 1fr;
   gap: 10px;
 } */
-.img-container{
+.AIpageimg-container{
   width:1920px;
   height: 780px;
   margin-bottom: 81px;

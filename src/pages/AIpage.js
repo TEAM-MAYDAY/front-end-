@@ -97,7 +97,7 @@ const AIpage = () => {
         const job = user.job; 
         // const interest = user.interest; 
         const purpose = user.purpose; 
-        const gender = user.gender;
+        
           const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
           {
             description: description,
@@ -122,18 +122,19 @@ const AIpage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
-    <div className="container">
-      <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
-      <main className="main">
-        <div className="left-sidebar-container">
+    <div className="AIpagecontainer">
+      <img className="AIpageimg-container" alt="img-container" src="imgs/Landing-BG.png" />
+      <main className="AIpagemain">
+        <div className="AIpageleft-sidebar-container">
           <img alt="illust" src="imgs/ilust.png" className="illust"/>
         </div>
-        <div className="content">
-          <div className="qeustion-section">
-            <div className="question-box">
-              <div className="question-num">1</div>
-              <div className="question-text">
+        <div className="AIpagecontent">
+          <div className="AIpagequestion-section">
+            <div className="AIpagequestion-box">
+              <div className="AIpagequestion-num">1</div>
+              <div className="AIpagequestion-text">
                 지원동기
               </div>
             </div>
@@ -148,10 +149,10 @@ const AIpage = () => {
                 rows="1" // 초기 행 높이 설정
               />
           </div>
-            <div className="qeustion-section">
-            <div className="question-box">
-              <div className="question-num">2</div>
-              <div className="question-text">
+            <div className="AIpagetqeustion-section">
+            <div className="AIpagequestion-box">
+              <div className="AIpagequestion-num">2</div>
+              <div className="AIpagequestion-text">
                 여행계획
               </div>
             </div>
@@ -167,10 +168,10 @@ const AIpage = () => {
               />
             </div>
             </div>
-            <div className="qeustion-section">
-            <div className="question-box">
-              <div className="question-num">3</div>
-              <div className="question-text">
+            <div className="AIpageqeustion-section">
+            <div className="AIpagequestion-box">
+              <div className="AIpagequestion-num">3</div>
+              <div className="AIpagequestion-text">
                 홍보계획
               </div>
             </div>
@@ -187,7 +188,7 @@ const AIpage = () => {
             </div>
             </div>
           </div>
-          <button onClick={handleButtonClick} className="btn">Ai 제안서 생성</button>
+          <button onClick={handleButtonClick} className="AIpagebtn">Ai 제안서 생성</button>
             {/* {loading && <div>로딩 중...</div>} */}
             {loading && 
               <div className="loading-container">
@@ -199,11 +200,11 @@ const AIpage = () => {
                 </div>
              </div>
             }
-            {error && <div>{error}</div>}
+            {error && <div className='AIpageErrorMessage'>{error}</div>}
             {/* {data && <AIanswer data={data} />} */}
           </div>
-        <div className="right-sidebar-container">
-          <div className="section1"></div>
+        <div className="AIpageright-sidebar-container">
+          <div className="AIpagesection1"></div>
           {/* <div className="section2"></div> */}
         </div>
       </main>
