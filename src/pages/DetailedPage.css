@@ -1,7 +1,14 @@
+@font-face {
+    font-family: 'Mayday-SUIT';
+    src: url('../../public/fonts/SUIT-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
- height: auto;
+    margin: 0;
+    font-family: 'Mayday-SUIT', sans-serif;
+    height: auto;
 }
 
 .container {
@@ -111,11 +118,13 @@ font-size: 20px;
 .content-header h2{
 font-size: 50px;
 padding: 5px 2px;
+font-family: 'Mayday-SUIT', sans-serif;
 }
 .content-detail h5{
 font-size: 15px;
 padding: 5px 2px;
 font-weight: normal;
+font-family: 'Mayday-SUIT', sans-serif;
 }
 
 
@@ -191,6 +200,7 @@ margin-left:40px;
   width: 220px;
   height: 60px;
   font-size: 20px;
+  font-family: 'Mayday-SUIT', sans-serif;
   transition: transform 0.5s, width 0.5s, height 0.5s, box-shadow 0.5s, opacity 0.5s;
   border: 0 solid ;
 }
@@ -207,6 +217,7 @@ margin-left:40px;
   left:50px;
   font-size: 12px;  
   color:   #21aa12;
+  font-family: 'Mayday-SUIT', sans-serif;
 }
 .alarm-sub-message{
   position: absolute;
@@ -214,12 +225,14 @@ margin-left:40px;
   left:60px;
   font-size: 10px;
   color: #8e8e93;
+  font-family: 'Mayday-SUIT', sans-serif;
 }
 .alarm-sub-message2{
   position: absolute;
   top:-340px;
   left:85px;
   font-size: 10px;
+  font-family: 'Mayday-SUIT', sans-serif;
 }
 .sidebar-box .sidebar {
   /* background-color: red; */

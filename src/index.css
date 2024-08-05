@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+    font-family: 'Mayday-SUIT';
+    src: url('../public/fonts/SUIT-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -7,7 +7,6 @@ div .footer4 {
     margin-top:0px;
     transition: transform 0.5s ease;
     background-color: #f8f8f8;
-  
   }
   .arrow3{
     width: 40px;
@@ -28,7 +27,8 @@ div .footer4 {
   .copyright {
     height: 251px;
     position: absolute;
-    top:0;
-    left:0;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
     z-index:1;
   }

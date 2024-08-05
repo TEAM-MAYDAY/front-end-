@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'Mayday-SUIT';
+    src: url('../../public/fonts/SUIT-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+label {
+    font-family : 'Mayday-SUIT',Arial, Helvetica, sans-serif;
+}
+
+button {
+    font-family: 'Mayday-SUIT',Arial, Helvetica, sans-serif;
+}
+
 .Loginform-container {
     max-width: 400px;
     margin: 0 auto;

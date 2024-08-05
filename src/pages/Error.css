@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Mayday-SUIT';
+    src: url('../../public/fonts/SUIT-Variable.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ServiceUnavailable.css */
 .errorpage {
     display: flex;
@@ -25,13 +32,14 @@
     left: 10px;
     margin-top:-20px;
   }
-  .status-code1, .status-code2 {
+.status-code1, .status-code2 {
     display: inline-block;
     vertical-align: middle;
     font-size: 20px;
+    font-family: 'Mayday-SUIT', sans-serif;
     margin: 0;
-    z-index:2;
-  }
+    z-index: 2;
+}
   .status-code1 {  
     color: #34c759;
 
@@ -45,6 +53,7 @@
 
   .message {
     font-size: 16px;
+    font-family: 'Mayday-SUIT', sans-serif;
     color: #333333;
     margin: 10px 0 20px 0;
     padding: 0 0;
@@ -60,6 +69,7 @@
   .back-button,
   .home-button {
     font-weight: 700;
+    font-family: 'Mayday-SUIT', sans-serif;
     background: #e0e0e0;
     border: none;
     border-radius: 20px;
