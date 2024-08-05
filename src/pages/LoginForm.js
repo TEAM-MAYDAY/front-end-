@@ -30,7 +30,7 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
                 console.error('서버와 연결할 수 없습니다.', error);
             } else if (error.response.status >= 500) {
                 // 서버 오류
-                setMessage('서버 오류가 발생했습니다. 잠시 후 다시 시도하세요.');
+                setMessage('잠시 후 다시 시도하세요.');
                 console.error('서버 오류', error.response.status);
             } else {
                 // 기타 오류 (로그인 실패 등)
@@ -45,19 +45,57 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
     };
 
     return (
-        <form onSubmit={handleSubmit} className="Loginform-container">
-            <div>
-                <label>ID:</label>
-                <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        // <form onSubmit={handleSubmit} className="Loginform-container">
+        //     <div>
+        //         <label>ID:</label>
+        //         <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        //     </div>
+        //     <div>
+        //         <label>Password:</label>
+        //         <input type="password" value={password} autocomplete="current-password" onChange={(e) => setPassword(e.target.value)} />
+        //     </div>
+        //     <button type="submit">Login</button>
+        //     <button type="button" onClick={handleSignupClick}>회원가입으로 이동</button>
+        //     <p>{message}</p>
+        // </form>
+    <div className='loginsection'>
+        <div className="login-container">
+            <img src="imgs/loginleft.png"  alt="img" className='left-section'/>
+            <div className="right-section">
+                <form onSubmit={handleSubmit} className="loginform">
+                    <h1>로그인</h1>
+                    <span className='highlight'>제주, 부산, 강원, 충남, 서울</span>
+                   <span> 지자체 워케이션 정책 비교하기!</span><p />
+                    <span>워케이션 포털</span>
+                    <span className='highlight'> 메이데이</span>
+                    <span>에 오신 걸 환영합니다.</span>
+                    <div className="form-group">
+                        <label className="IDpart">ID</label>
+                        <input
+                            type="text"
+                            value={id}
+                            onChange={(e) => setId(e.target.value)}
+                            placeholder="입력란"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>비밀번호　<h1>{message}</h1></label> 
+                        <input
+                            type="password"
+                            value={password}
+                            autoComplete="current-password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="입력란"
+                        />
+                    </div>
+                    <button type="submit" className="login-button">로그인</button>
+                    <p>계정이 없나요? <button type="button" className="signup-link" onClick={handleSignupClick}>회원가입</button></p>
+
+                </form>
             </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" value={password} autocomplete="current-password" onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button type="submit">Login</button>
-            <button type="button" onClick={handleSignupClick}>회원가입으로 이동</button>
-            <p>{message}</p>
-        </form>
+        </div>
+    </div>
+
     );
 }
 

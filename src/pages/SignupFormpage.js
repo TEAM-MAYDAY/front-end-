@@ -174,7 +174,8 @@ function SignupFormpage() {
 
     return (
        <div className='RealContainer'>
-        {true && (
+        {/* {true && ( */}
+        {isRegistrationSuccessful && (
             <>
             <div className="overlay"></div>
             <div className="success-message">
