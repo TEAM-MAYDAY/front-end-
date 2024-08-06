@@ -137,9 +137,9 @@ const DetailedPage = () => {
           <div className="Detailed-sidebar-box">
             <div className="Detailed-sidebar-message">📎 관련 사이트</div>
             <div className="Detailed-sidebar">
-            <div className="Detailed" onClick={() => handleNavigation('https://worcation.sba.kr/S02/1/')}>
-                <h1> 1 서울기업워케이션 [퇴근만큼즐거운출근]</h1>
-                <img src="imgs/Seoul.png" alt="" className="Detailed-sideImg" />
+            <div className="Detailed" onClick={() => handleNavigation('https://jb-worcation.com/')}>
+                <h1> 1 전북 워케이션</h1>
+                <img src="imgs/jeonbuk.png" alt="" className="Detailed-sideImg" />
             </div>
             <div className="Detailed" onClick={() => handleNavigation('https://jejuworkation.or.kr/Supportproject')}>
                 <h1> 2 제주 워케이션 </h1>

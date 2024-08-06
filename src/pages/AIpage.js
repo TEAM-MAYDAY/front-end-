@@ -95,9 +95,9 @@ const AIpage = () => {
               // 로컬 스토리지에서 사용자 정보 가져오기
               const user = JSON.parse(localStorage.getItem('user'));
                     if (!user) {
-                        setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
-                        setLoading(false);
-                        return;
+                      alert('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+                      navigate('/login');
+                      return;
                     }
 
        // user 객체에서 job, purpose 추출
@@ -212,15 +212,16 @@ const AIpage = () => {
                 </div>
              </div>
             }
-            {error && <div className='AIpageErrorMessage'>{error}</div>}
+            {/* {error && <div className='AIpageErrorMessage'>{error}</div>} */}
+            {/* <div className='AIpageErrorMessage'>errrror</div> */}
             {/* {data && <AIanswer data={data} />} */}
           </div>
           <div className="Detailed-sidebar-box2">
             <div className="Detailed-sidebar-message2">📎 관련 사이트</div>
             <div className="Detailed-sidebar2">
-            <div className="Detailed" onClick={() => handleNavigation('https://worcation.sba.kr/S02/1/')}>
-                <h1> 1 서울기업워케이션 [퇴근만큼즐거운출근]</h1>
-                <img src="imgs/Seoul.png" alt="" className="Detailed-sideImg" />
+            <div className="Detailed" onClick={() => handleNavigation('https://jb-worcation.com/')}>
+                <h1> 1 전북 워케이션</h1>
+                <img src="imgs/jeonbuk.png" alt="" className="Detailed-sideImg" />
             </div>
             <div className="Detailed" onClick={() => handleNavigation('https://jejuworkation.or.kr/Supportproject')}>
                 <h1> 2 제주 워케이션 </h1>

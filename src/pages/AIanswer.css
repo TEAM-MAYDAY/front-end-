@@ -178,7 +178,7 @@ body, html {
     margin-top: 0px;
   }
   .back-btn{
-    width: 160px;
+    /* width: 160px;
     height: 60px;
     color: black;
     background-color: #ffffff;
@@ -187,8 +187,31 @@ body, html {
     box-shadow: 0px 4px 4px #0000004c, 0px 8px 12px 6px #00000026;
     margin-top:-120px;
     margin-left: 0; 
-    padding: 21px 24px;
+    padding: 21px 24px; */
+    align-items: center;
+  background-color:rgba(0, 122, 255, 1);
+height: 40px;
+border-radius: 25px;
+/* margin: 10px 20px 10px 40px; */
+margin-top:-120px;
+justify-content: center;
+display: flex;
+align-items: center;
+left: 40px;
+text-align: center;
+color: #ffffff;
+font-family: "SUIT Variable-Bold", Helvetica;
+font-size: auto;
+font-size: 17px;
+font-weight: 700;
+letter-spacing: 0;
+line-height: normal;
+min-height: 33px;
+min-width: 131px;
+padding: 4px 4px;
+width:auto;
     transition: transform 0.2s;
+    border: none;
   }
   .back-btn:hover{
     cursor: pointer;
