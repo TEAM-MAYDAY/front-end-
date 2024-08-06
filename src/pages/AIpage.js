@@ -99,7 +99,8 @@ const AIpage = () => {
         // const purpose = user.purpose; 
       
           // const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
-            const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT, 
+            // const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT, 
+          const response = await axios.post('http://ec2-13-124-126-240.ap-northeast-2.compute.amazonaws.com:8000', 
           {
             description: description,
             answer1: inputValue1,
@@ -109,9 +110,9 @@ const AIpage = () => {
             // purpose: purpose
           });
           console.log(response.data);
-          // navigate('/aianswer', { state: { data: response.data } });
+          navigate('/aianswer', { state: { data: response.data } });
           // navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
-          navigate('/aianswer', { state: { data: response.data || []} });
+          // navigate('/aianswer', { state: { data: response.data || []} });
 
         } catch (err) {
           setError('데이터 가져오기 오류: ' + err.message);
