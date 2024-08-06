@@ -37,7 +37,7 @@ body, html {
   position: relative;
   box-sizing: border-box; 
   max-width:860px;
-  height: 1280px;
+  height: 980px;
   padding-top: 65px;
   padding-left: 24px;
   padding-right: 24px;
@@ -73,21 +73,23 @@ body, html {
 
 .AIpagequestion-text {
   color: #333333;
-  font-size: 14px;
+  font-size:24px;
   font-family: 'Mayday-SUIT', sans-serif;
   line-height: 1.6;
   max-width: 800px;
 
 }
 
-.input-guide {
-  font-size: 12px;
+.input-guide{
+  display: block;
+  font-size: 15px !important;
   font-family: 'Mayday-SUIT', sans-serif;
   color: #333333;
   margin-bottom: 5px;
-  margin-left: 40px;
+  margin-left: 0;
   margin-top:10px;
-  padding:0 35px;
+  padding: 0;
+  margin-left:10px !important; 
 }
 
 .input-field1, .input-field2, .input-field3 {
@@ -117,6 +119,9 @@ body, html {
   overflow: hidden;
   width: 100%; 
   max-height: 200px;
+  font-size: 15px;
+  font-family: 'Mayday-SUIT', sans-serif;
+
 }
 .textarea-box:focus{
   outline: none;
@@ -189,8 +194,8 @@ margin: 0 40px;
   border: none;
   font-size: 20px;
   font-family: 'Mayday-SUIT', sans-serif;
-  top:1200px;
-  left: 412.3px;
+  top:900px;
+  left: 390px;
   font-weight: 700;
   transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -264,6 +269,7 @@ margin: 0 40px;
 
 .Detailed-sidebar-box2 {
   position: relative;
+  margin-top:10px;
 }
 
 .Detailed-sidebar-message2 {
@@ -272,7 +278,7 @@ margin: 0 40px;
   font-size: 19px;
   width:auto;
   margin-bottom: 20px;
-  margin-top:-400px;
+  /* margin-top:10px; */
 }
 
 .Detailed-sidebar2 {
@@ -284,7 +290,6 @@ margin: 0 40px;
   margin-left: 30px;
   width: 380px;
   height: 800px;
-  top:00px;
 }
 
 .Detailed {

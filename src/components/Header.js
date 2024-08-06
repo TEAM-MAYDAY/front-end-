@@ -11,7 +11,10 @@ import { useNavigate } from 'react-router-dom';
         navigate('/login');
     };
     const handleClick2 = () => {
-        navigate('/error');
+        navigate('/');
+    };
+    const handleClick3 = () => {
+        navigate('/supportpolices');
     };
 
     return (
@@ -22,8 +25,8 @@ import { useNavigate } from 'react-router-dom';
                 </div>
                 <nav className="header-links">
                     <span className="header-link" onClick={handleClick2}>워케이션이란? </span>
-                    <span className="header-link">워케이션 비교</span>
-                    <span className="header-link">커뮤니티</span>
+                    <span className="header-link" onClick={handleClick3}>워케이션 비교</span>
+                    {/* <span className="header-link">커뮤니티</span> */}
                     {user ? ( 
                         <span className="header-link">{user.name}님 환영합니다!</span>
                     ) : ( 

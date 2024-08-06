@@ -11,6 +11,7 @@ import './App.css';
 import AIpage from './pages/AIpage';
 import AIanswer from './pages/AIanswer.js';
 import DetailedPage from './pages/DetailedPage';
+import SupportPolicies from './pages/SupportPolicies';
 import Error from './pages/Error';
 import LoginForm from './pages/LoginForm';
 import SignupFormpage from './pages/SignupFormpage';
@@ -44,6 +45,7 @@ const App = () => {
             <Header user={user} /> {/* Header에 user prop 전달 */}
             <Routes>
                 <Route path="/" element={<><Home /></>} /> 
+                <Route path="/supportpolices" element={<><SupportPolicies /> <Footer2 /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
