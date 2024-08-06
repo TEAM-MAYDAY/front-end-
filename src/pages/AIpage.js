@@ -17,14 +17,22 @@ const AIpage = () => {
   const textareaRef2 = useRef(null);
   const textareaRef3 = useRef(null);
 
+
   // Description을 위한 새로운 State
   // 해당 워케이션에 대한 정보를 저장하고 있으면 됨
   // 또한 String으로만 유지하고 있으면 충분
   // const [description, setDescription] = useState("");
-  const location = useLocation();
 
-  const { description: initialDescription } = location.state || { description: "" };
-  // const [description, setDescription] = useState(initialDescription);
+  // const { description: initialDescription } = location.state || { description: "" };
+  // // const [description, setDescription] = useState(initialDescription);
+  // const additionalText = "\n날짜는 2024년 8월 7일부터 14일까지 7일동안";
+  // const [description, setDescription] = useState(initialDescription + additionalText);
+  // const { description, imageUrl } = location.state || {};
+
+  const location = useLocation();
+  // const { description: initialDescription = "", imgeUrl } = location.state || {};
+  const { description: initialDescription = "", imageUrl } = location.state || {};
+
   const additionalText = "\n날짜는 2024년 8월 7일부터 14일까지 7일동안";
   const [description, setDescription] = useState(initialDescription + additionalText);
 
@@ -113,11 +121,12 @@ const AIpage = () => {
             answer2: inputValue2,
             answer3: inputValue3,
             job: job,
-            purpose: purpose
+            purpose: purpose,
           });
           console.log(response.data);
           // navigate('/aianswer', { state: { data: response.data } });
-          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
+          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose }, imgeUrl: imageUrl 
+          } });
           // navigate('/aianswer', { state: { data: response.data || []} });
 
         } catch (err) {
@@ -137,7 +146,11 @@ const AIpage = () => {
 
   return (
     <div className="AIpagecontainer">
-      <img className="AIpageimg-container" alt="img-container" src="imgs/Landing-BG.png" />
+      {/* <img className="AIpageimg-container" alt="" src="imgs/Landing-BG.png" /> */}
+      <div className="Detailed-gallery2">
+
+      <img alt="img-container" src={imageUrl} className="large-image2"/>
+      </div>
       <main className="AIpagemain">
         <div className="AIpageleft-sidebar-container">
           <img alt="illust" src="imgs/ilust.png" className="illust"/>

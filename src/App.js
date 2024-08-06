@@ -45,8 +45,8 @@ const App = () => {
             <Header user={user} /> {/* Header에 user prop 전달 */}
             <Routes>
                 <Route path="/" element={<><Home /></>} /> 
-                <Route path="/supportpolices" element={<><SupportPolicies /> <Footer2 /></>} /> 
                 <Route path="/detailed" element={<> <DetailedPage /><Footer2 /> </>} />
+                <Route path="/SupportPolicies" element={<> <SupportPolicies /><Footer2 /> </>} />
                 <Route path="/aipage" element={<><AIpage /><Footer2 /></>} />
                 <Route path="/aianswer" element={<><AIanswer /><Footer2 /></>} />
                 <Route path="/error" element={<><Error /><Footer3 /></>} />

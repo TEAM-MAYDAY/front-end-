@@ -93,7 +93,8 @@ const DetailedPage = () => {
     // navigate('/aipage');
     navigate('/aipage', {
       state: {
-        description: `${locationData.locationIntroduction}\n\n${locationData.providedDetails}`
+        description: `${locationData.locationIntroduction}\n\n${locationData.providedDetails}\n\n`,
+        imageUrl: locationData.imageUrl
       }
     });
   };

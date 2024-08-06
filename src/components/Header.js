@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
         navigate('/');
     };
     const handleClick3 = () => {
-        navigate('/supportpolices');
+        navigate('/SupportPolicies');
     };
 
     return (

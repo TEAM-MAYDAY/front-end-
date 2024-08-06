@@ -5,7 +5,9 @@ import { useLocation } from 'react-router-dom';
 const AIanswer = () => {
 
   const location = useLocation();
-  const { data, userInfo } = location.state || { data: {}, userInfo: {} };
+  // const { data, userInfo,imageUrl } = location.state || { data: {}, userInfo: {} };
+  const { data, userInfo, imgeUrl } = location.state || {};
+
       // 데이터가 존재하는지 확인하고, 기본값을 설정합니다.
       const content = data.length > 0 ? data[0].content : "No content available";
       const job = userInfo.job || "N/A";
@@ -64,7 +66,10 @@ const handleNavigation = (url) => {
 
     return (
         <div className="AIanswercontainer">
-        <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" />
+        {/* <img className="img-container" alt="img-container" src="imgs/Landing-BG.png" /> */}
+        <div className="Detailed-gallery2">
+        <img alt="img-container" src={imgeUrl} className="large-image2"/>
+        </div>
         <main className="AIanswermain">
             <div className="AIanswerleft-sidebar-container">
               <img alt="illust" src="imgs/ilust.png" className="illust2"/>
