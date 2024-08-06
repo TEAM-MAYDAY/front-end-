@@ -6,16 +6,19 @@ body, html, .home-container {
   font-family: 'Mayday-SUIT', sans-serif;
   color: #333;
   width: 100%;
+  width:auto;
   /* height: 100%; */
   height: 300vh ;
   box-sizing: border-box;
   overflow-x: hidden;
+  height: auto;
   /* overflow-y: hidden; */
 }
 
 .home-container {
   display: flex;
   flex-direction: column;
+  width:auto;
 }
 .SupportPoliciesContainer{
   height: 1000px ;
@@ -39,6 +42,46 @@ body, html, .home-container {
 .aweseome{
   overflow-y: none;
   height: auto;
+  width:100%;
+}
+.back-btn2{
+  align-items: center;
+  background-color:rgba(0, 122, 255, 1);
+height: 40px;
+border-radius: 25px;
+/* margin: 10px 20px 10px 40px; */
+margin-top:-120px;
+justify-content: center;
+display: flex;
+align-items: center;
+left: 40px;
+text-align: center;
+color: #ffffff;
+font-family: "SUIT Variable-Bold", Helvetica;
+font-size: auto;
+font-size: 17px;
+font-weight: 700;
+letter-spacing: 0;
+line-height: normal;
+min-height: 33px;
+min-width: 131px;
+padding: 4px 4px;
+width:200px;
+    transition: transform 0.2s;
+    border: none;
+    margin: 20px auto;
+    background-color: #7dbf69;
+
+}
+.gara{
+  background-color: black;
+  background: linear-gradient(to right, #4b763e, #7dbf69  );
+  height: auto; /* Adjust the height as needed */
+  width: 100%;
+}
+.back-btn2:hover{
+  cursor: pointer;
+  transform: scale(1.15, 1.15);
 }
 .section2 {
   display: flex;

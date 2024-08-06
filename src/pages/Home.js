@@ -5,6 +5,7 @@ import SupportPolicies from './SupportPolicies';
 import Footer from '../components/Footer'; // Importing Footer component
 import { useSpring, animated } from 'react-spring';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [stage, setStage] = useState(0);
@@ -71,11 +72,20 @@ const Home = () => {
     }
   }, [stage]);
 
+
+  const navigate = useNavigate();
+
+
+  const handleClick3 = () => {
+    navigate('/SupportPolicies');
+};
+
   return (
     <div className="home-container">
       {/* <animated.div style={landingProps} className="section">
         <Landing />
       </animated.div>
+    const navigate = useNavigate();
 
       {stage === 2 && (
         <div className="SupportPoliciesContainer">
@@ -86,6 +96,9 @@ const Home = () => {
         </div>
       )} */}
       <img src="imgs/Landing-B3G.png" alt="랜딩페이지~~!!!~"className="aweseome" />
+      <div className="gara">
+      <button onClick={handleClick3} className="back-btn2">워케이션 비교 보러가기</button>
+      </div>
     </div>
   );
 };
