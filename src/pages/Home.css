@@ -10,6 +10,7 @@ body, html, .home-container {
   height: 300vh ;
   box-sizing: border-box;
   overflow-x: hidden;
+  /* overflow-y: hidden; */
 }
 
 .home-container {
@@ -35,7 +36,10 @@ body, html, .home-container {
   top: 0;
   left: 0;
 }
-
+.aweseome{
+  overflow-y: none;
+  height: auto;
+}
 .section2 {
   display: flex;
   min-height: 100vh; 

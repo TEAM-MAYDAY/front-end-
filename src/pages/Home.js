@@ -73,21 +73,19 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <animated.div style={landingProps} className="section">
+      {/* <animated.div style={landingProps} className="section">
         <Landing />
       </animated.div>
-      {/* <animated.div style={lightBulbProps} className="section">
-        <LightBulb />
-      </animated.div> */}
+
       {stage === 2 && (
         <div className="SupportPoliciesContainer">
           <animated.div style={supportPoliciesProps} className="section2 grid-container">
             <SupportPolicies />
-            {/* <Footer /> */}
-            <Footer gridRef={gridRef} /> {/* gridRef를 Footer로 전달 */}
+            <Footer gridRef={gridRef} /> 
           </animated.div>
         </div>
-      )}
+      )} */}
+      <img src="imgs/Landing-B3G.png" alt="랜딩페이지~~!!!~"className="aweseome" />
     </div>
   );
 };
