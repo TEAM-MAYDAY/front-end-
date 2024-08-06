@@ -44,7 +44,9 @@
 .logo {
     height: 50px;
 }
-
+.logo:hover{
+    cursor: pointer;
+}
 .header-links {
     display: flex;
     gap: 1px;

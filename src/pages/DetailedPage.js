@@ -94,7 +94,8 @@ const DetailedPage = () => {
     navigate('/aipage', {
       state: {
         description: `${locationData.locationIntroduction}\n\n${locationData.providedDetails}\n\n`,
-        imageUrl: locationData.imageUrl
+        imageUrl: locationData.imageUrl,
+        tags: tags
       }
     });
   };

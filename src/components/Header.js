@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
         <header className="header">
             <div className="header-content">
                 <div className="logo-and-text">
-                    <img src="/imgs/Mainlogo.png" alt="Logo" className="logo" />
+                    <img src="/imgs/Mainlogo.png" alt="Logo" className="logo"onClick={handleClick3} />
                 </div>
                 <nav className="header-links">
                     <span className="header-link" onClick={handleClick2}>워케이션이란? </span>

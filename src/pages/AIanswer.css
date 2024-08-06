@@ -30,7 +30,9 @@ body, html {
   .AIanswerqeustion-section{
     font-family: 'Mayday-SUIT', sans-serif;
     height: auto;
+    /* width:560px; */
     width:auto;
+  
     box-sizing: border-box; 
     padding-right: 0;
   }

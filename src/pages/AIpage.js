@@ -31,7 +31,8 @@ const AIpage = () => {
 
   const location = useLocation();
   // const { description: initialDescription = "", imgeUrl } = location.state || {};
-  const { description: initialDescription = "", imageUrl } = location.state || {};
+  // const { description: initialDescription = "", imageUrl } = location.state || {};
+  const { description: initialDescription, imageUrl, tags } = location.state || { description: "", tags: [] };
 
   const additionalText = "\n날짜는 2024년 8월 7일부터 14일까지 7일동안";
   const [description, setDescription] = useState(initialDescription + additionalText);
@@ -122,6 +123,7 @@ const AIpage = () => {
             answer3: inputValue3,
             job: job,
             purpose: purpose,
+            tags: tags 
           });
           console.log(response.data);
           // navigate('/aianswer', { state: { data: response.data } });
@@ -156,6 +158,11 @@ const AIpage = () => {
           <img alt="illust" src="imgs/ilust.png" className="illust"/>
         </div>
         <div className="AIpagecontent">
+        <section className="content-tagbar">
+          {tags.map((tag, index) => (
+            <div key={index} className="tag"># {tag}</div> 
+          ))}
+        </section>
           <div className="AIpagequestion-section">
             <div className="AIpagequestion-box">
               <div className="AIpagequestion-num">1</div>
