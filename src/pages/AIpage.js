@@ -87,11 +87,11 @@ const AIpage = () => {
         console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
               // 로컬 스토리지에서 사용자 정보 가져오기
               const user = JSON.parse(localStorage.getItem('user'));
-                    if (!user) {
-                        setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
-                        setLoading(false);
-                        return;
-                    }
+                    // if (!user) {
+                    //     setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+                    //     setLoading(false);
+                    //     return;
+                    // }
               // user 객체에서 job, interest, purpose 추출
         // user 객체에서 job, interest, purpose 추출
         const job = user.job; 
