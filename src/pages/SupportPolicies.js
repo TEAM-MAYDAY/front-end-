@@ -51,7 +51,7 @@ const SupportPolicies = () => {
 
     //jeju -> 제주도 이런식으로 찐화면에 뜨는건 한글로 함.
     const regionMap = {
-        seoul: '서울',
+        jeonbuk: '전북',
         gangwon: '강원도',
         jeju: '제주도',
         busan: '부산',
@@ -71,7 +71,7 @@ const SupportPolicies = () => {
       coworkingOffice: false,
       parking: false,
       phoneBooth: false,
-      seoul: false,
+      jeonbuk: false,
       gangwon: false,
       jeju: false,
       busan: false,
@@ -155,7 +155,7 @@ const SupportPolicies = () => {
   const filterLocations = (filters) => {
     if (!filters) return; // filters가 정의되지 않은 경우를 처리
 
-    const noRegionSelected = !filters.seoul && !filters.gangwon && !filters.jeju && !filters.busan && !filters.chungnam;
+    const noRegionSelected = !filters.jeonbuk && !filters.gangwon && !filters.jeju && !filters.busan && !filters.chungnam;
 
     const filtered = locations.filter(location => {
       const regionMatch = noRegionSelected || filters[location.region];
@@ -223,15 +223,15 @@ const SupportPolicies = () => {
                     className={`category-button ${clickedButtons.phoneBooth ? 'selected' : ''}`}
                     onClick={() => handleButtonClick('phoneBooth')}
                 >
-                    phoneBooth
+                    전화부스
                 </button>
             </div>
             <div className="button-row">
                 <button
-                    className={`category-button ${clickedButtons.seoul ? 'selected' : ''}`}
-                    onClick={() => handleButtonClick('seoul')}
+                    className={`category-button ${clickedButtons.jeonbuk ? 'selected' : ''}`}
+                    onClick={() => handleButtonClick('jeonbuk')}
                 >
-                    서울
+                    전북
                 </button>
                 <button
                     className={`category-button ${clickedButtons.gangwon ? 'selected' : ''}`}

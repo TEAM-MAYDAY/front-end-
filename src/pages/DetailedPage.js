@@ -59,7 +59,6 @@ const DetailedPage = () => {
     
  // 태그 생성
     const tags = [
-      locationData && locationData.address,
       // locationData && regionMap[locationData.region] || locationData.region,
       locationData && regionMap[locationData.region],
       locationData && locationData.monitor && '모니터',
@@ -71,7 +70,9 @@ const DetailedPage = () => {
     console.log('Tags:', tags); // Tags 로그 출력
 
       // 추가된 속성들을 처리하기 위한 details 배열 생성
+
   const details = [
+    { label: '주소', value: locationData &&  locationData.address }, // 제공 혜택 추가
     { label: '서비스 기간', value: locationData && locationData.servicePeriod },
     { label: '전화번호', value: locationData &&  locationData.phoneNumber }, // 전화번호 추가
     { label: '운영 시간', value: locationData &&  locationData.operatingTime }, // 운영 시간 추가

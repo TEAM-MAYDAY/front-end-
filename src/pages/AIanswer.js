@@ -56,7 +56,11 @@ useEffect(() => {
 
 const backpage = () => {
   window.history.back();
-}
+}  
+const handleNavigation = (url) => {
+  window.open(url, '_blank');
+};
+
 
     return (
         <div className="AIanswercontainer">
@@ -119,9 +123,31 @@ const backpage = () => {
             </div>
           </div>
         </div>
-        <div className="AIanswercontentright-sidebar-container">
-          <div className="AIanswercontentsection1"></div>
-        </div>
+        <div className="Detailed-sidebar-box2">
+            <div className="Detailed-sidebar-message2">📎 관련 사이트</div>
+            <div className="Detailed-sidebar2">
+            <div className="Detailed" onClick={() => handleNavigation('https://worcation.sba.kr/S02/1/')}>
+                <h1> 1 서울기업워케이션 [퇴근만큼즐거운출근]</h1>
+                <img src="imgs/Seoul.png" alt="" className="Detailed-sideImg" />
+            </div>
+            <div className="Detailed" onClick={() => handleNavigation('https://jejuworkation.or.kr/Supportproject')}>
+                <h1> 2 제주 워케이션 </h1>
+                <img src="imgs/Jeju.png" alt="" className="Detailed-sideImg" />
+            </div>
+            <div className="Detailed" onClick={() => handleNavigation('https://worcation.co.kr/gw')}>
+                <h1> 3 강원 워케이션 </h1>
+                <img src="imgs/Gangwon.png" alt="" className="Detailed-sideImg" />
+            </div>
+            <div className="Detailed" onClick={() => handleNavigation('https://www.busaness.com/')}>
+                <h1> 4 부산 워케이션 </h1>
+                <img src="imgs/Busan.png" alt="" className="Detailed-sideImg" />
+            </div>
+            <div className="Detailed" onClick={() => handleNavigation('https://www.cacf.or.kr/site/program/index.php')}>
+                <h1> 5 충남 워케이션 (충남문화관광재단) </h1>
+                <img src="imgs/Chungnam.png" alt="" className="Detailed-sideImg2" />
+            </div>
+            </div>         
+          </div>
       </main>
     </div>
   );
