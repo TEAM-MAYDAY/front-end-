@@ -8,8 +8,8 @@ const AIanswer = () => {
   const { data, userInfo } = location.state || { data: {}, userInfo: {} };
       // 데이터가 존재하는지 확인하고, 기본값을 설정합니다.
       const content = data.length > 0 ? data[0].content : "No content available";
-      // const job = userInfo.job || "N/A";
-      // const purpose = userInfo.purpose || "N/A";
+      const job = userInfo.job || "N/A";
+      const purpose = userInfo.purpose || "N/A";
 
 useEffect(() => {
     window.scrollTo(0, 0);

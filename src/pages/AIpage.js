@@ -83,29 +83,29 @@ const AIpage = () => {
   const handleButtonClick = async () => {
       setLoading(true);
       setError(null);
+
       try {
         console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
               // 로컬 스토리지에서 사용자 정보 가져오기
               // const user = JSON.parse(localStorage.getItem('user'));
-                    // if (!user) {
-                    //     setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
-                    //     setLoading(false);
-                    //     return;
-                    // }
-              // user 객체에서 job, interest, purpose 추출
-        // user 객체에서 job, interest, purpose 추출
+              //       if (!user) {
+              //           setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+              //           setLoading(false);
+              //           return;
+              //       }
+
+       // user 객체에서 job, purpose 추출
         // const job = user.job; 
-        // const interest = user.interest; 
         // const purpose = user.purpose; 
-        
-          const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
+      
+          // const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
+            const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT, 
           {
             description: description,
             answer1: inputValue1,
             answer2: inputValue2,
             answer3: inputValue3,
             // job: job,
-            // interest: interest,
             // purpose: purpose
           });
           console.log(response.data);
