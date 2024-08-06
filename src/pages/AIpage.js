@@ -86,7 +86,7 @@ const AIpage = () => {
       try {
         console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
               // 로컬 스토리지에서 사용자 정보 가져오기
-              const user = JSON.parse(localStorage.getItem('user'));
+              // const user = JSON.parse(localStorage.getItem('user'));
                     // if (!user) {
                     //     setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
                     //     setLoading(false);
@@ -94,9 +94,9 @@ const AIpage = () => {
                     // }
               // user 객체에서 job, interest, purpose 추출
         // user 객체에서 job, interest, purpose 추출
-        const job = user.job; 
+        // const job = user.job; 
         // const interest = user.interest; 
-        const purpose = user.purpose; 
+        // const purpose = user.purpose; 
         
           const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
           {
@@ -104,13 +104,15 @@ const AIpage = () => {
             answer1: inputValue1,
             answer2: inputValue2,
             answer3: inputValue3,
-            job: job,
+            // job: job,
             // interest: interest,
-            purpose: purpose
+            // purpose: purpose
           });
           console.log(response.data);
           // navigate('/aianswer', { state: { data: response.data } });
-          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
+          // navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
+          navigate('/aianswer', { state: { data: response.data || []} });
+
         } catch (err) {
           setError('데이터 가져오기 오류: ' + err.message);
       } finally {
