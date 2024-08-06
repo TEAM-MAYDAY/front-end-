@@ -4,22 +4,19 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 
-// const regionMap = {
-//   seoul: '서울',
-//   gangwon: '강원도',
-//   jeju: '제주도',
-//   busan: '부산',
-//   chungnam: '충남'
-// };
-  
+
 
 const DetailedPage = () => {
-  const location = useLocation(); // 전달된 상태를 받기 위한 useLocation 훅
-  // const { location: locationData } = location.state || { location: {} }; // 전달된 데이터 추출
-  const { locationId } = useParams(); // URL에서 locationId를 가져옴
+
+  const locationState = useLocation(); // 전달된 상태를 받기 위한 useLocation 훅
+  const { locationId: paramLocationId } = useParams(); // URL에서 locationId를 가져옴
+  const { location: stateLocation } = locationState.state || {}; // state로 전달된 location 데이터
+
+  const locationId = stateLocation?.locationId || paramLocationId;
   const [locationData, setLocationData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,10 +33,19 @@ const DetailedPage = () => {
     fetchData();
   }, []); 
 
+  const regionMap = {
+    seoul: '서울',
+    gangwon: '강원도',
+    jeju: '제주도',
+    busan: '부산',
+    chungnam: '충남'
+  };
+    
  // 태그 생성
     const tags = [
-      // locationData.address,
-      // regionMap[locationData.region] || locationData.region,
+      locationData.address,
+      regionMap[locationData.region] || locationData.region,
+      // regionMap[locationData.region],
       locationData.monitor && '모니터',
       locationData.conferenceRoom && '회의실',
       locationData.parking && '주차공간',
@@ -50,6 +56,7 @@ const DetailedPage = () => {
 
       // 추가된 속성들을 처리하기 위한 details 배열 생성
   const details = [
+    { label: '서비스 기간', value: locationData.servicePeriod },
     { label: '전화번호', value: locationData.phoneNumber }, // 전화번호 추가
     { label: '운영 시간', value: locationData.operatingTime }, // 운영 시간 추가
     { label: '소개', value: locationData.locationIntroduction }, // 소개 추가
@@ -71,20 +78,19 @@ const DetailedPage = () => {
   return (
     <div className="Detailed-container">
     <div className="Detailed-gallery">
-        {/* <img className="large-image" src={locationData.imageUrl} alt="Gallery" /> */}
-        <img className="large-image" src="imgs/Landing-BG.png" alt="Gallery" /> 
+        <img className="large-image" src={locationData.imageUrl} alt="Gallery" />
+        {/* <img className="large-image" src="imgs/Landing-BG.png" alt="Gallery" />  */}
     </div>
     <main className="main">
       <div className="Detailed-content">
         <section className="content-header">
-          {/* <h2>{locationData.name}</h2> */}
-          <h2>가제</h2>
+          <h2>{locationData.name}</h2>
           <div className="lined-heading">한줄 소개글</div>
         </section>
         <section className="content-tagbar">
-          {/* {tags.map((tag, index) => (
+          {tags.map((tag, index) => (
             <div key={index} className="tag"># {tag}</div> 
-          ))} */}
+          ))}
         </section>
         <section className="content-detail">
         {details.map((detail, index) => (

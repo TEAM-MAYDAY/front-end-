@@ -111,7 +111,7 @@
   height: 338px;
   width: 351px;
 }
-.support-badge {
+/* .support-badge {
   position:   absolute;
   display: inline-block;
   padding: 4px 8px;
@@ -124,24 +124,31 @@
   font-family: 'Mayday-SUIT',sans-serif;
   margin-bottom: 8px;
   position: absolute;
-}
+} */
 
 .card-content h2 {
-  position:   absolute;
+  position:   relative;
   /* margin: 8px 0; */
-  margin-top: 250px;
-  margin-left: 20px;
+  margin-top: 10px;
+    margin-left: 20px;
   font-size: 24px;
   font-family: 'Mayday-SUIT',sans-serif;
   font-weight: 700;
-  display: inline-block;
+  display: block;
   vertical-align: middle;
+  margin-bottom: 0;
+}
+.MaincardImg{
+  width:100%;
+  height: 220px;
 }
 .card-content p {
   position:   relative;
   color: #555;
-  margin-top: 285px;
-  margin-left: 280px;
+  /* margin-top: 285px;
+  margin-left: 280px; */
+  margin-left:0;
+  margin-top:0;
   display: inline-block;
   vertical-align: middle;
   font-size: 15px;
@@ -152,7 +159,7 @@
   /* position:   absolute; */
   position: relative;
   color: #000000;
-  margin-top: 300px;
+  margin-top: 10px;
   margin-left: 20px;
   display: inline-block;
   vertical-align: middle;

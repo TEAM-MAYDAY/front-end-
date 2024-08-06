@@ -272,15 +272,14 @@ const SupportPolicies = () => {
           // key 속성 수정: location.locationId에 index를 추가하여 고유한 값을 사용
         //   <div key={location.locationId + '-' + index} className="card-container">
         <div key={location.locationId + '-' + index} className="card-container" onClick={() => handleCardClick(location)}> 
-           <div className="card-image">
-              <img src={location.imageUrl} alt={`${location.name} 이미지`} />
-            </div>
+           {/* <div className="card-image">
+            </div> */}
             <div className="card-content">
+            <img className="MaincardImg"src={location.imageUrl} alt={`${location.name} 이미지`} />
               {/* <div className="support-badge">10만원지원금</div> */}
               <h2>{location.name}</h2>
-              {/* <h5>{`${location.region} ${location.address}`}</h5> */}
               <h5>{`${getRegionName(location.region)} ${location.address}`}</h5>
-              <p>2박 3일</p>
+              {/* <p>2박 3일</p> */}
             </div>
           </div>
         ))}
