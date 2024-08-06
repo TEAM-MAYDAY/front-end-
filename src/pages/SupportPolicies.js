@@ -159,13 +159,13 @@ const SupportPolicies = () => {
       
       const attributeMatch = (!filters.monitor || location.monitor)
         && (!filters.conferenceRoom || location.conferenceRoom)
-        && (!filters.cafe || location.officeType === 'cafe')
-        && (!filters.coworkingOffice || location.officeType === 'coworkingOffice') //백엔드에서 none카페형 오피스를 정의한걸로 이름 바꾸기 ㄲ
+        && (!filters.cafe || location.officeType === '카페형 오피스')
+        && (!filters.coworkingOffice || location.officeType === '공유형 오피스') 
         && (!filters.parking || location.parking)
         && (!filters.phoneBooth || location.phoneBooth);
       
       return regionMatch && attributeMatch;
-    });
+      });
 
     setFilteredLocations(filtered);
   };
@@ -267,19 +267,13 @@ const SupportPolicies = () => {
                 </div>
             </div>
       </div> */}
-      <div className="cards">
+     <div className="cards">
         {filteredLocations.map((location, index) => (
-          // key 속성 수정: location.locationId에 index를 추가하여 고유한 값을 사용
-        //   <div key={location.locationId + '-' + index} className="card-container">
         <div key={location.locationId + '-' + index} className="card-container" onClick={() => handleCardClick(location)}> 
-           {/* <div className="card-image">
-            </div> */}
             <div className="card-content">
-            <img className="MaincardImg"src={location.imageUrl} alt={`${location.name} 이미지`} />
-              {/* <div className="support-badge">10만원지원금</div> */}
+              <img className="MaincardImg"src={location.imageUrl} alt={`${location.name} 이미지`} />
               <h2>{location.name}</h2>
-              <h5>{`${getRegionName(location.region)} ${location.address}`}</h5>
-              {/* <p>2박 3일</p> */}
+              <h5>{` ${location.address}`}</h5>
             </div>
           </div>
         ))}
