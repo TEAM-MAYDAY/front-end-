@@ -14,7 +14,7 @@ const LoginForm = ({ setUser }) => { // setUser prop 추가
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/login', {
+            const response = await axios.post('https://api.mayday-spring.store:8080/api/v1/login', {
                 id,
                 password
             });

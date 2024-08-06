@@ -14,9 +14,13 @@ const AIanswer = () => {
 useEffect(() => {
     window.scrollTo(0, 0);
  }, []);    
-const [inputValue1, setInputValue1] = useState('');
-const [inputValue2, setInputValue2] = useState('');
-const [inputValue3, setInputValue3] = useState('');
+// const [inputValue1, setInputValue1] = useState('');
+// const [inputValue2, setInputValue2] = useState('');
+// const [inputValue3, setInputValue3] = useState('');
+  // 초기 상태를 FastAPI에서 받은 데이터로 설정
+  const [inputValue1, setInputValue1] = useState(data[0]?.content || '');
+  const [inputValue2, setInputValue2] = useState(data[1]?.content || '');
+  const [inputValue3, setInputValue3] = useState(data[2]?.content || '');
 
 const textareaRef1 = useRef(null);
 const textareaRef2 = useRef(null);
@@ -63,77 +67,64 @@ const backpage = () => {
               <button className="back-btn" onClick={backpage}>&lt;-돌아가기</button>
             </div>
             <div className="AIanswercontent">
-              <div className="AIanswerqeustion-section">
-                <div className="AIanswerquestion-box">
-                  <div className="AIanswercontentquestion-num">1</div>
-                  <div className="AIanswercontentquestion-text">
-                    지원동기
-                  </div>
-                </div>
-                <div className="input-guide"></div>
-                <div className='input-field1'>
-                  <textarea
-                    ref={textareaRef1}
-                  // data[0].content ~ data[2].content 값으로 데이터 접근
-                    // value={data[0].content}
-                    value={data[0]?.content || ''} // 조건부 렌더링 및 기본값 설정
-                    className='textarea-box'
-                    placeholder="데이터가 없습니다!"
-                    rows="5" // 초기 행 높이 설정
-                  />
-              </div>
-              </div>
-              <div className="AIanswerqeustion-section">
-                <div className="AIanswerquestion-box">
-                  <div className="AIanswercontentquestion-num">2</div>
-                  <div className="AIanswercontentquestion-text">
-                    여행계획
-                  </div>
-                </div>
-                <div className="input-guide"></div>
-                <div className='input-field1'>
-                  <textarea
-                    ref={textareaRef2}
-                    // value={data[1].content}
-                    value={data[1]?.content || ''} // 조건부 렌더링 및 기본값 설정
-                    className='textarea-box'
-                    placeholder="데이터가 없습니다!"
-                    rows="5" // 초기 행 높이 설정
-                  />
-              </div>
-              </div>
-              <div className="AIanswerqeustion-section">
-                <div className="AIanswerquestion-box">
-                  <div className="AIanswercontentquestion-num">3</div>
-                  <div className="AIanswercontentquestion-text">
-                    홍보계획
-                  </div>
-                </div>
-                <div className="input-guide"></div>
-                <div className='input-field1'>
-                  <textarea
-                    ref={textareaRef3}
-                    // value={data[2].content}
-                    value={data[2]?.content || ''} // 조건부 렌더링 및 기본값 설정
-                    className='textarea-box'
-                    placeholder="데이터가 없습니다!"
-                    rows="5" // 초기 행 높이 설정
-                  />
-              </div>
+          <div className="AIanswerqeustion-section">
+            <div className="AIanswerquestion-box">
+              <div className="AIanswercontentquestion-num">1</div>
+              <div className="AIanswercontentquestion-text">지원동기</div>
             </div>
+            <div className="input-guide"></div>
+            <div className="input-field1">
+              <textarea
+                ref={textareaRef1}
+                value={inputValue1}
+                onChange={(e) => setInputValue1(e.target.value)}
+                className="textarea-box"
+                // placeholder="데이터가 없습니다!"
+                rows="5"
+              />
             </div>
-            <div className="AIanswercontentright-sidebar-container">
-              {/* <div className="section2"></div> */}
-              <div className='AIanswercontentsection1'></div>
+          </div>
+          <div className="AIanswerqeustion-section">
+            <div className="AIanswerquestion-box">
+              <div className="AIanswercontentquestion-num">2</div>
+              <div className="AIanswercontentquestion-text">여행계획</div>
             </div>
-
-
-          </main>
-
-      </div>
-
-     
-    );
+            <div className="input-guide"></div>
+            <div className="input-field1">
+              <textarea
+                ref={textareaRef2}
+                value={inputValue2}
+                onChange={(e) => setInputValue2(e.target.value)}
+                className="textarea-box"
+                // placeholder="데이터가 없습니다!"
+                rows="5"
+              />
+            </div>
+          </div>
+          <div className="AIanswerqeustion-section">
+            <div className="AIanswerquestion-box">
+              <div className="AIanswercontentquestion-num">3</div>
+              <div className="AIanswercontentquestion-text">홍보계획</div>
+            </div>
+            <div className="input-guide"></div>
+            <div className="input-field1">
+              <textarea
+                ref={textareaRef3}
+                value={inputValue3}
+                onChange={(e) => setInputValue3(e.target.value)}
+                className="textarea-box"
+                // placeholder="데이터가 없습니다!"
+                rows="5"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="AIanswercontentright-sidebar-container">
+          <div className="AIanswercontentsection1"></div>
+        </div>
+      </main>
+    </div>
+  );
 };
 
 export default AIanswer;

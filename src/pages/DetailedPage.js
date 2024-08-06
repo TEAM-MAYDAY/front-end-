@@ -17,21 +17,37 @@ const DetailedPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/info/${locationId}`);
+  //       setLocationData(response.data);
+  //       console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
+  //     } catch (err) {
+  //       setError('데이터를 가져오는 데 오류가 발생했습니다.');
+  //       console.error(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []); 
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/info/${locationId}`);
-        setLocationData(response.data);
-        console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
-      } catch (err) {
-        setError('데이터를 가져오는 데 오류가 발생했습니다.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+        try {
+            const response = await axios.get(`https://api.mayday-spring.store:8080/api/v1/location/info/${locationId}`);
+            setLocationData(response.data);
+            console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
+        } catch (err) {
+            setError('데이터를 가져오는 데 오류가 발생했습니다.');
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
     };
     fetchData();
-  }, []); 
+}, [locationId]); // locationId 변경 시 useEffect 재실행
 
   const regionMap = {
     seoul: '서울',
@@ -43,24 +59,24 @@ const DetailedPage = () => {
     
  // 태그 생성
     const tags = [
-      locationData.address,
-      regionMap[locationData.region] || locationData.region,
-      // regionMap[locationData.region],
-      locationData.monitor && '모니터',
-      locationData.conferenceRoom && '회의실',
-      locationData.parking && '주차공간',
-      locationData.phoneBooth && '폰부스',
-      locationData.officeType
+      locationData && locationData.address,
+      // locationData && regionMap[locationData.region] || locationData.region,
+      locationData && regionMap[locationData.region],
+      locationData && locationData.monitor && '모니터',
+      locationData && locationData.conferenceRoom && '회의실',
+      locationData && locationData.parking && '주차공간',
+      locationData &&locationData.phoneBooth && '폰부스',
+      locationData && locationData.officeType
     ].filter(Boolean); // truthy 값만 필터링
     console.log('Tags:', tags); // Tags 로그 출력
 
       // 추가된 속성들을 처리하기 위한 details 배열 생성
   const details = [
-    { label: '서비스 기간', value: locationData.servicePeriod },
-    { label: '전화번호', value: locationData.phoneNumber }, // 전화번호 추가
-    { label: '운영 시간', value: locationData.operatingTime }, // 운영 시간 추가
-    { label: '소개', value: locationData.locationIntroduction }, // 소개 추가
-    { label: '제공 혜택', value: locationData.providedDetails } // 제공 혜택 추가
+    { label: '서비스 기간', value: locationData && locationData.servicePeriod },
+    { label: '전화번호', value: locationData &&  locationData.phoneNumber }, // 전화번호 추가
+    { label: '운영 시간', value: locationData &&  locationData.operatingTime }, // 운영 시간 추가
+    { label: '소개', value: locationData &&  locationData.locationIntroduction }, // 소개 추가
+    { label: '제공 혜택', value: locationData &&  locationData.providedDetails } // 제공 혜택 추가
   ];
   const navigate = useNavigate(); //ai입력페이지로 이동
 
@@ -73,19 +89,24 @@ const DetailedPage = () => {
   }, []);
 
   const handleClick = () => {
-    navigate('/aipage');
+    // navigate('/aipage');
+    navigate('/aipage', {
+      state: {
+        description: `${locationData.locationIntroduction}\n\n${locationData.providedDetails}`
+      }
+    });
   };
   return (
     <div className="Detailed-container">
     <div className="Detailed-gallery">
-        <img className="large-image" src={locationData.imageUrl} alt="Gallery" />
+        <img className="large-image" src={locationData && locationData.imageUrl} alt="Gallery" />
         {/* <img className="large-image" src="imgs/Landing-BG.png" alt="Gallery" />  */}
     </div>
     <main className="main">
       <div className="Detailed-content">
         <section className="content-header">
-          <h2>{locationData.name}</h2>
-          <div className="lined-heading">한줄 소개글</div>
+          <h2>{locationData && locationData.name}</h2>
+          {/* <div className="lined-heading">한줄 소개글</div> */}
         </section>
         <section className="content-tagbar">
           {tags.map((tag, index) => (

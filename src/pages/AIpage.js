@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './AIpage.css';
 import axios from 'axios';
 import AIanswer from './AIanswer';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const AIpage = () => {
   const [inputValue1, setInputValue1] = useState('');
@@ -20,7 +20,14 @@ const AIpage = () => {
   // Description을 위한 새로운 State
   // 해당 워케이션에 대한 정보를 저장하고 있으면 됨
   // 또한 String으로만 유지하고 있으면 충분
-  const [description, setDescription] = useState("https://www.monthler.kr/programs/1170\n\n워킹 홀리데이 in 의령 - 2박 3일로컬과 연결되는 프로젝트\n\n[워킹홀리데이 in 의령]은 경상남도의 작은 시골마을 의령에서 다양한 전통 산업 및 로컬 브랜드와 연계하여 디자인, 브랜딩, 기획 및 마케팅의 프로젝트 진행 또는 전통 브랜드의 기술 전승 등을 병행하며 현지의 문화와 생활을 경험할 수 있는 프로젝트입니다.\n\n활동기간 : 24년 7월 29일 (월) ~ 24년 8월 31일 (토)\n\n로컬 브랜드 목록\n- (전통) 의령조청한과 / 전통식문화 및 체험 보조\n- (전통) 다향연 / 전통 차문화 및 제다체험 보조\n- (전통) 강외영 염색공방 / 인성교육 및 전통염색체험 보조\n- (전통) 의령토속식품 / 전통 망개떡 제조 및 레시피 전수\n\n프로그램\n프로그램 / 부제목 / 내용\n- 숲속영화관 / '메타세쿼이아'와 무비 갬성의 조화 / '메타세쿼이아'숲에서 빔프로젝트를 활용하여 영화상영\n- 트레킹 / 차가운 비가 내리는 '찰비계곡' 트레킹 / 시원한 물줄기 계곡을 따라서 트레킹\n- 별자리 탐구 / 맑은 의령 밤하늘 내 마음의 '별'로 / 오염되지 않은 '의령'의 하늘에서 별자리 관측\n- 농악 / 로컬클럽 개장! 신명나는 '농악' / 칠곡면 '치실농악단'에서 농악 즐기기\n- 백패킹 / 온 몸으로 자연 속에 딥다이빙 / '자굴산' 및 '한우산' 백패킹\n- 요가 / 피톤치드 폭탄과 함께하는 나마스떼 / 국가 산림문화자산 '신포숲'에서 심신정화");
+  // const [description, setDescription] = useState("");
+  const location = useLocation();
+
+  const { description: initialDescription } = location.state || { description: "" };
+  // const [description, setDescription] = useState(initialDescription);
+  const additionalText = "\n날짜는 2024년 8월 7일부터 14일까지 7일동안";
+  const [description, setDescription] = useState(initialDescription + additionalText);
+
   const handleDivClick1 = () => {
     setIsClicked1(!isClicked1);
   };
@@ -83,35 +90,34 @@ const AIpage = () => {
   const handleButtonClick = async () => {
       setLoading(true);
       setError(null);
-
       try {
-        console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
+        // console.log('FASTAPI_ENDPOINT:', process.env.REACT_APP_FASTAPI_ENDPOINT);
               // 로컬 스토리지에서 사용자 정보 가져오기
-              // const user = JSON.parse(localStorage.getItem('user'));
-              //       if (!user) {
-              //           setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
-              //           setLoading(false);
-              //           return;
-              //       }
+              const user = JSON.parse(localStorage.getItem('user'));
+                    if (!user) {
+                        setError('로그인 정보가 없습니다. 다시 로그인 해주세요.');
+                        setLoading(false);
+                        return;
+                    }
 
        // user 객체에서 job, purpose 추출
-        // const job = user.job; 
-        // const purpose = user.purpose; 
+        const job = user.job; 
+        const purpose = user.purpose; 
       
           // const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT + '/create_proposal', 
             // const response = await axios.post(process.env.REACT_APP_FASTAPI_ENDPOINT, 
-          const response = await axios.post('http://ec2-13-124-126-240.ap-northeast-2.compute.amazonaws.com:8000', 
-          {
+            const response = await axios.post('https://api.mayday-spring.shop:8000'+ '/create_proposal', 
+           {
             description: description,
             answer1: inputValue1,
             answer2: inputValue2,
             answer3: inputValue3,
-            // job: job,
-            // purpose: purpose
+            job: job,
+            purpose: purpose
           });
           console.log(response.data);
-          navigate('/aianswer', { state: { data: response.data } });
-          // navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
+          // navigate('/aianswer', { state: { data: response.data } });
+          navigate('/aianswer', { state: { data: response.data || [], userInfo: { job, purpose } } });
           // navigate('/aianswer', { state: { data: response.data || []} });
 
         } catch (err) {

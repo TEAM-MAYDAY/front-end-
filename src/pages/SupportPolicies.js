@@ -98,7 +98,10 @@ const SupportPolicies = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/all');
+   
+          // const response = await axios.get('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/all');
+          const response = await axios.get('https://api.mayday-spring.store:8080/api/v1/location/all');
+
           // if (response.status !== 200) {
           //   console.log("HTTP오류");
           //   throw new Error(`HTTP error! status: ${response.status}`);
@@ -173,9 +176,11 @@ const SupportPolicies = () => {
       const navigate = useNavigate(); //각 컨테이너 눌렀을때 DetailedPage.js로이동
 
       const handleCardClick = (location) => {
+        console.log('Clicked location:', location);
         navigate('/detailed', { state: { location } }); // 페이지 이동 및 데이터 전달
       };
-    
+
+
 
   return (
     <div className="support-policies">
