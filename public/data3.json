@@ -1,0 +1,20 @@
+[
+    {
+      "locationId": 3,
+      "name": "코틀러 제주지사",
+      "address": "제주특별자치도 제주시 관덕로 65",
+      "region": "jeju",
+      "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
+      "monitor": true,
+      "conferenceRoom": false,
+      "officeType": "카페형 오피스",
+      "parking": false,
+      "phoneBooth": false,
+      "servicePeriod": "2024년 8월 17일 ~ 9월 2일",
+      "phoneNumber": "0507-1351-7893",
+      "locationIntroduction": "일과 휴식을 즐기는 것이 목적인 프리미엄 워케이션 공간",
+      "operatingTime": "09:00 - 21:00 (월~금) ",
+      "providedDetails":"단체석, 무선 인터넷, 무인 CCTV 운영중"
+    }
+  ]
+  

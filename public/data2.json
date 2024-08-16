@@ -1,50 +1,50 @@
 [
     {
         "locationId": 5,
-        "name": "장소5",
-        "address": "주소5",
+        "name": "장소1",
+        "address": "주소1",
         "region": "jeju",
         "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
         "monitor": true,
         "conferenceRoom": false,
-        "officeType": "cafe",
+        "officeType": "공유형 오피스",
         "parking": true,
         "phoneBooth": true
     },
     {
         "locationId": 5,
-        "name": "장소5",
-        "address": "주소5",
-        "region": "jeju",
+        "name": "장소2",
+        "address": "주소2",
+        "region": "gangwon",
         "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
         "monitor": true,
         "conferenceRoom": false,
-        "officeType": "cafe",
+        "officeType": "공유형 오피스",
         "parking": true,
         "phoneBooth": true
     },
     {
         "locationId": 5,
-        "name": "장소5",
-        "address": "주소5",
-        "region": "jeju",
+        "name": "장소3",
+        "address": "주소3",
+        "region": "busan",
         "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
         "monitor": true,
-        "conferenceRoom": false,
-        "officeType": "cafe",
-        "parking": true,
-        "phoneBooth": true
+        "conferenceRoom": true,
+        "officeType": "카페형 오피스",
+        "parking": false,
+        "phoneBooth": false
     },
     {
         "locationId": 5,
-        "name": "장소5",
-        "address": "주소5",
-        "region": "jeju",
+        "name": "장소4",
+        "address": "주소4",
+        "region": "chungnam",
         "imageUrl": "https://worcation.sba.kr//member/co/1241_20240614155042.png",
-        "monitor": true,
-        "conferenceRoom": false,
-        "officeType": "cafe",
-        "parking": true,
-        "phoneBooth": true
+        "monitor": false,
+        "conferenceRoom": true,
+        "officeType": "카페형 오피스",
+        "parking": false,
+        "phoneBooth": false
     }
 ]

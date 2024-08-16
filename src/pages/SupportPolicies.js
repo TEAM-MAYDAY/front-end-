@@ -5,49 +5,6 @@ import axios from 'axios';
 import './SupportPolicies.css';
 
 const SupportPolicies = () => {
-    // const [selectedFilters, setSelectedFilters] = useState([]);
-    // const [allCards, setAllCards] = useState([]);
-    // const [filteredCards, setFilteredCards] = useState([]);
-
-    // // 필터 버튼 클릭 핸들러
-    // const handleButtonClick = (buttonName, filter) => {
-    //     setClickedButtons(prevState => ({
-    //         ...prevState,
-    //         [buttonName]: !prevState[buttonName],
-    //     }));
-
-    //     setSelectedFilters(prevFilters =>
-    //         prevFilters.includes(filter)
-    //             ? prevFilters.filter(f => f !== filter)
-    //             : [...prevFilters, filter]
-    //     );
-    // };
-
-    // // 백엔드 데이터 요청
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch('https://api.example.com/cards');
-    //             const data = await response.json();
-    //             setAllCards(data);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, []);
-
-    // // 필터링된 카드 업데이트
-    // useEffect(() => {
-    //     if (selectedFilters.length === 0) {
-    //         setFilteredCards(allCards);
-    //     } else {
-    //         setFilteredCards(allCards.filter(card => 
-    //             selectedFilters.every(filter => card.categories.includes(filter))
-    //         ));
-    //     }
-    // }, [selectedFilters, allCards]);
 
     //jeju -> 제주도 이런식으로 찐화면에 뜨는건 한글로 함.
     const regionMap = {
@@ -81,62 +38,51 @@ const SupportPolicies = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
   
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get('/data2.json');
-    //       setLocations(response.data);
-    //       setFilteredLocations(response.data); // 처음에는 모든 데이터를 표시
-    //     } catch (err) {
-    //       setError('데이터를 가져오는 데 오류가 발생했습니다.');
-    //     } finally {
-    //       setLoading(false);
-    //     }
-    //   };    
-    //   fetchData();
-    // }, []);
     useEffect(() => {
       const fetchData = async () => {
         try {
-   
-          // const response = await axios.get('http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/all');
-          const response = await axios.get('https://api.mayday-spring.store:8080/api/v1/location/all');
-
-          // if (response.status !== 200) {
-          //   console.log("HTTP오류");
-          //   throw new Error(`HTTP error! status: ${response.status}`);
-          // }
-          const items = response.data.items;
-          // if (!items || items.length === 0) {
-          //   console.log("데이터 X");
-          //   throw new Error('데이터가 없습니다.');
-          console.log(items);
-          // }
-          setLocations(items);
-          setFilteredLocations(items); // 처음에는 모든 데이터를 표시
+          const response = await axios.get('/data2.json');
+          setLocations(response.data);
+          setFilteredLocations(response.data); // 처음에는 모든 데이터를 표시
         } catch (err) {
-          if (err.response) {
-            // 서버 응답이 있는 경우 (2xx 범위 외의 상태 코드)
-            if (err.response.status === 404) {
-              console.log('서버에서 데이터를 찾을 수 없습니다.');
-            } else if (err.response.status === 500) {
-              console.log('서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.');
-            } else {
-              console.log(`서버 오류: ${err.response.status}`);
-            }
-          } else if (err.request) {
-            // 요청이 이루어졌으나 응답을 받지 못한 경우
-            console.log('서버와 통신할 수 없습니다. 네트워크를 확인해주세요.');
-          } else {
-            // 기타 오류
-            console.log(`오류가 발생했습니다: ${err.message}`);
-          }
+          setError('데이터를 가져오는 데 오류가 발생했습니다.');
         } finally {
           setLoading(false);
         }
       };    
       fetchData();
     }, []);
+    //서버 api연결 부분
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const response = await axios.get('https://api.mayday-spring.store:8080/api/v1/location/all');
+    //       const items = response.data.items;
+    //       setLocations(items);
+    //       setFilteredLocations(items); 
+    //     } catch (err) {
+    //       if (err.response) {
+    //       // 서버 응답이 있는 경우 (2xx 범위 외의 상태 코드)
+    //         if (err.response.status === 404) {
+    //           console.log('서버에서 데이터를 찾을 수 없습니다.');
+    //         } else if (err.response.status === 500) {
+    //           console.log('서버에 문제가 있습니다. 잠시 후 다시 시도해주세요.');
+    //         } else {
+    //           console.log(`서버 오류: ${err.response.status}`);
+    //         }
+    //       } else if (err.request) {
+    //         // 요청이 이루어졌으나 응답을 받지 못한 경우
+    //         console.log('서버와 통신할 수 없습니다. 네트워크를 확인해주세요.');
+    //       } else {
+    //         // 기타 오류
+    //         console.log(`오류가 발생했습니다: ${err.message}`);
+    //       }
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };    
+    //   fetchData();
+    // }, []);
 
   // 필터 상태와 location 데이터를 로드한 후에 필터링 함수 호출
   useEffect(() => {
@@ -175,13 +121,16 @@ const SupportPolicies = () => {
     
       const navigate = useNavigate(); //각 컨테이너 눌렀을때 DetailedPage.js로이동
 
-      const handleCardClick = (location) => {
-        console.log('Clicked location:', location);
-        navigate('/detailed', { state: { location } }); // 페이지 이동 및 데이터 전달
+      // const handleCardClick = (location) => {
+      //   console.log('Clicked location:', location);
+      //   navigate('/detailed', { state: { location } }); // 페이지 이동 및 데이터 전달
+      // };
+
+
+      const handleCardClick = () => {
+        // 특정 locationId를 강제 설정하여 항상 같은 페이지로 이동
+        navigate('/detailed', { state: { locationId: 3 } });
       };
-
-
-
   return (
     <div className="support-policies">
       <div className="header-support-policies">
@@ -279,6 +228,7 @@ const SupportPolicies = () => {
               <img className="MaincardImg"src={location.imageUrl} alt={`${location.name} 이미지`} />
               <h2>{location.name}</h2>
               <h5>{` ${location.address}`}</h5>
+              
             </div>
           </div>
         ))}

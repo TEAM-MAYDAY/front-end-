@@ -12,42 +12,51 @@ const DetailedPage = () => {
   const { locationId: paramLocationId } = useParams(); // URL에서 locationId를 가져옴
   const { location: stateLocation } = locationState.state || {}; // state로 전달된 location 데이터
 
-  const locationId = stateLocation?.locationId || paramLocationId;
+  // const locationId = stateLocation?.locationId || paramLocationId;
   const [locationData, setLocationData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`http://ec2-15-164-115-210.ap-northeast-2.compute.amazonaws.com:8080/api/v1/location/info/${locationId}`);
-  //       setLocationData(response.data);
-  //       console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
-  //     } catch (err) {
-  //       setError('데이터를 가져오는 데 오류가 발생했습니다.');
-  //       console.error(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []); 
 
-  useEffect(() => {
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(`https://api.mayday-spring.store:8080/api/v1/location/info/${locationId}`);
-            setLocationData(response.data);
-            console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
-        } catch (err) {
-            setError('데이터를 가져오는 데 오류가 발생했습니다.');
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    };
-    fetchData();
-}, [locationId]); // locationId 변경 시 useEffect 재실행
+//   useEffect(() => {
+//     const fetchData = async () => {
+//         try {
+//             const response = await axios.get(`https://api.mayday-spring.store:8080/api/v1/location/info/${locationId}`);
+//             setLocationData(response.data);
+//             console.log('Fetched location data:', response.data); // Fetch된 데이터 로그 출력
+//         } catch (err) {
+//             setError('데이터를 가져오는 데 오류가 발생했습니다.');
+//             console.error(err);
+//         } finally {
+//             setLoading(false);
+//         }
+//     };
+//     fetchData();
+// }, [locationId]); // locationId 변경 시 useEffect 재실행
+const location = useLocation();
+const locationId = location.state?.locationId || 3; // 기본적으로 locationId 3을 사용
+
+useEffect(() => {
+  const fetchData = async () => { 
+    try {
+      const response = await fetch('/data3.json');
+      const data = await response.json();
+      
+      const foundLocation = data.find((loc) => loc.locationId === locationId);
+      if (foundLocation) {
+        setLocationData(foundLocation);
+      } else {
+        setError('해당 데이터를 찾을 수 없습니다.');
+      }
+    } catch (err) {
+      setError('데이터를 불러오는 중 오류가 발생했습니다.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData(); // 함수 호출
+}, [locationId]);
 
   const regionMap = {
     seoul: '서울',
@@ -99,6 +108,7 @@ const DetailedPage = () => {
       }
     });
   };
+
   return (
     <div className="Detailed-container">
     <div className="Detailed-gallery">
